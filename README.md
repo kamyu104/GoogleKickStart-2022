@@ -12,7 +12,7 @@
 ## Round A
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
-|A| [Speed Typing](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb33e/00000000009e7021)| [Python3](./Round%20A/speed_typing.py)| _O(\|I\|)_ | _O(1)_ | Easy | | String |
-|B| [Challenge Nine](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb33e/00000000009e7997)| [Python3](./Round%20A/challenge_nine.py) | _O(logN)_ | _O(logN)_ | Easy | | Math, Greedy |
-|C| [Palindrome Free Strings](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb33e/00000000009e762e)| [Python3](./Round%20A/palindrome_free_strings.py)| _O(N)_ | _O(N)_ | Medium | | Backtracking |
+|A| [Speed Typing](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb33e/00000000009e7021)| [Python3](./Round%20A/speed_typing.py3)| _O(\|I\|)_ | _O(1)_ | Easy | | String |
+|B| [Challenge Nine](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb33e/00000000009e7997)| [Python3](./Round%20A/challenge_nine.py3) | _O(logN)_ | _O(logN)_ | Easy | | Math, Greedy |
+|C| [Palindrome Free Strings](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb33e/00000000009e762e)| [Python3](./Round%20A/palindrome_free_strings.py3)| _O(N)_ | _O(N)_ | Medium | | Backtracking |
 |D| [Interesting Integers](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb33e/00000000009e73ea)| |   |  | Hard | |  |
