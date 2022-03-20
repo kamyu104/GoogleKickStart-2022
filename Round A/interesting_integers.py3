@@ -7,12 +7,13 @@
 # Space: O(M * (9M)^3)
 #
 
+from functools import lru_cache
+
+@lru_cache(None)
 def g(l, product, total, target):  # Total Time: O(M * (9M)^3)
     if l == 0:
         return int(total == target and product == 0)
-    if (l, product, total, target) not in lookup:
-        lookup[(l, product, total, target)] = sum(g(l-1, (product*x)%target, total+x, target) for x in range(0, 9+1))
-    return lookup[(l, product, total, target)]
+    return sum(g(l-1, (product*x)%target, total+x, target) for x in range(0, 9+1))
 
 def count_interesting_integers_with_number_of_digits(target, l):  # Time: O(1)
     return sum(g(l-1, x%target, x, target) for x in range(1, 9+1))
@@ -43,6 +44,5 @@ def interesting_integers():
     A, B = list(map(int, input().strip().split()))
     return f(B)-f(A-1)
 
-lookup = {}
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, interesting_integers()))
