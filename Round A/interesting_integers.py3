@@ -3,15 +3,15 @@
 # Google Kick Start 2022 Round A - Problem D. Interesting Integers
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb33e/00000000009e73ea
 #
-# Time:  precompute: O(M * (9M)^3), M is log(MAX_B)
+# Time:  precompute: O(log(MAX_B) * (9log(MAX_B))^3)
 #        runtime:    O((9logB)^2)
-# Space: O(M * (9M)^3)
+# Space: O(log(MAX_B) * (9log(MAX_B))^3)
 #
 
 from functools import lru_cache
 
 @lru_cache(None)
-def memoization(target, l, product, total):  # Total Time: O(M * (9M)^3)
+def memoization(target, l, product, total):  # Total Time: O(log(MAX_B) * (9log(MAX_B))^3)
     if l == 0:
         return int(total == target and product == 0)
     return sum(memoization(target, l-1, (product*x)%target, total+x) for x in range(10))
