@@ -10,7 +10,7 @@
 
 from functools import lru_cache
 
-@lru_cache(None)
+@lru_cache(None)  # lazily precompute
 def memoization(target, l, product, total):  # Total Time: O(log(MAX_B) * (9log(MAX_B))^3)
     if l == 0:
         return int(total == target and product == 0)
