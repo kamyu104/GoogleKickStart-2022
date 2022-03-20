@@ -10,19 +10,19 @@
 from functools import lru_cache
 
 @lru_cache(None)
-def memoization(l, product, total, target):  # Total Time: O(M * (9M)^3)
+def memoization(target, l, product, total):  # Total Time: O(M * (9M)^3)
     if l == 0:
         return int(total == target and product == 0)
-    return sum(memoization(l-1, (product*x)%target, total+x, target) for x in range(9+1))
+    return sum(memoization(target, l-1, (product*x)%target, total+x) for x in range(9+1))
 
 def count_interesting_integers_with_number_of_digits(target, l):  # Time: O(1)
-    return sum(memoization(l-1, x%target, x, target) for x in range(1, 9+1))
+    return sum(memoization(target, l-1, x%target, x) for x in range(1, 9+1))
 
 def count_interesting_integers_with_prefix_of_digits(target, digits):  # Time: O(len(digits))
     result = 0
     product, total = 1, 0
     for i, x in enumerate(digits):
-        result += sum(memoization((len(digits)-1)-i, (product*x)%target, total+x, target) for x in range(int(i == 0), x))
+        result += sum(memoization(target, (len(digits)-1)-i, (product*x)%target, total+x) for x in range(int(i == 0), x))
         product, total = (product*x)%target, total+x
     result += int(product%total == 0 and total == target)
     return result
