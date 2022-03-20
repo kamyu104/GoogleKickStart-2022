@@ -3,7 +3,8 @@
 # Google Kick Start 2022 Round A - Problem D. Interesting Integers
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb33e/00000000009e73ea
 #
-# Time:  O(M * (9M)^3), M is max(len(digits))
+# Time:  precompute: O(M * (9M)^3), M is log(MAX_B)
+#        runtime:    O((9logB)^2)
 # Space: O(M * (9M)^3)
 #
 
@@ -15,7 +16,7 @@ def memoization(target, l, product, total):  # Total Time: O(M * (9M)^3)
         return int(total == target and product == 0)
     return sum(memoization(target, l-1, (product*x)%target, total+x) for x in range(10))
 
-def count_with_prefix_of_digits(target, digits):  # Time: O(len(digits))
+def count_with_prefix_of_digits(target, digits):  # Time: O(9 * len(digits))
     result = 0
     product, total = 1, 0
     for i, x in enumerate(digits):
@@ -24,7 +25,7 @@ def count_with_prefix_of_digits(target, digits):  # Time: O(len(digits))
     result += memoization(target, 0, product, total)
     return result
 
-def f(x):  # Time: O(len(digits)^2)
+def f(x):  # Time: O((9logx))^2)
     digits = list(map(int, str(x)))
     result = 0
     for target in range(1, 9*len(digits)+1):
