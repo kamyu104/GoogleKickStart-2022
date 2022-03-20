@@ -19,7 +19,7 @@ def check(s, i):
             return False
     return True
 
-def backtracking(s):  # backtrack only the valid states, of which number is O(N)
+def iter_backtracking(s):  # backtrack only the valid states, of which number is O(N)
     lookup = {i for i, x in enumerate(s) if x == '?'}
     stk = []
     i = 0
@@ -38,7 +38,7 @@ def backtracking(s):  # backtrack only the valid states, of which number is O(N)
 def palindrome_free_strings():
     N = int(input().strip())
     S = list(input().strip())
-    return "POSSIBLE" if backtracking(S) else "IMPOSSIBLE"
+    return "POSSIBLE" if iter_backtracking(S) else "IMPOSSIBLE"
 
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, palindrome_free_strings()))
