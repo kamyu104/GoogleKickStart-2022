@@ -48,8 +48,8 @@ def interesting_integers():
 MAX_B = 10**12
 MAX_TOTAL = 9*len(str(MAX_B))  # capped by 2^6 * 3^4 * 5^2 * 7^2
 FACT = [[2, 1], [3, 1], [5, 1], [7, 1]]
-for i in range(len(FACT)):
-    while FACT[i][1]*FACT[i][0] <= MAX_TOTAL:
-        FACT[i][1] *= FACT[i][0]
+for x in FACT:
+    while x[1]*x[0] <= MAX_TOTAL:
+        x[1] *= x[0]
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, interesting_integers()))
