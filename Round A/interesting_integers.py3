@@ -10,13 +10,13 @@
 from functools import lru_cache
 
 @lru_cache(None)
-def g(l, product, total, target):  # Total Time: O(M * (9M)^3)
+def memoization(l, product, total, target):  # Total Time: O(M * (9M)^3)
     if l == 0:
         return int(total == target and product == 0)
-    return sum(g(l-1, (product*x)%target, total+x, target) for x in range(9+1))
+    return sum(memoization(l-1, (product*x)%target, total+x, target) for x in range(9+1))
 
 def count_interesting_integers_with_number_of_digits(target, l):  # Time: O(1)
-    return sum(g(l-1, x%target, x, target) for x in range(1, 9+1))
+    return sum(memoization(l-1, x%target, x, target) for x in range(1, 9+1))
 
 def count_interesting_integers_with_prefix_of_digits(target, digits):  # Time: O(len(digits))
     result = 0
@@ -25,7 +25,7 @@ def count_interesting_integers_with_prefix_of_digits(target, digits):  # Time: O
         if i == len(digits):
             result += int(product%total == 0 and total == target)
             continue
-        result += sum(g((len(digits)-1)-i, (product*x)%target, total+x, target) for x in range(int(i == 0), digits[i]))
+        result += sum(memoization((len(digits)-1)-i, (product*x)%target, total+x, target) for x in range(int(i == 0), digits[i]))
         product, total = (product*digits[i])%target, total+digits[i]
     return result
 
