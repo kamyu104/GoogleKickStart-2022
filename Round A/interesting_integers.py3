@@ -15,9 +15,6 @@ def memoization(target, l, product, total):  # Total Time: O(M * (9M)^3)
         return int(total == target and product == 0)
     return sum(memoization(target, l-1, (product*x)%target, total+x) for x in range(10))
 
-def count_with_number_of_digits(target, l):  # Time: O(1)
-    return sum(memoization(target, l-1, x%target, x) for x in range(1, 10))
-
 def count_with_prefix_of_digits(target, digits):  # Time: O(len(digits))
     result = 0
     product, total = 1, 0
@@ -32,7 +29,7 @@ def f(x):  # Time: O(len(digits)^2)
     result = 0
     for target in range(1, 9*len(digits)+1):
         for l in range(1, len(digits)):
-            result += count_with_number_of_digits(target, l)
+            result += sum(memoization(target, l-1, x%target, x) for x in range(1, 10))
         result += count_with_prefix_of_digits(target, digits)
     return result
 
