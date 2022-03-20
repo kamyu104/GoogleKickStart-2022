@@ -15,10 +15,10 @@ def memoization(target, l, product, total):  # Total Time: O(M * (9M)^3)
         return int(total == target and product == 0)
     return sum(memoization(target, l-1, (product*x)%target, total+x) for x in range(9+1))
 
-def count_interesting_integers_with_number_of_digits(target, l):  # Time: O(1)
+def count_with_number_of_digits(target, l):  # Time: O(1)
     return sum(memoization(target, l-1, x%target, x) for x in range(1, 9+1))
 
-def count_interesting_integers_with_prefix_of_digits(target, digits):  # Time: O(len(digits))
+def count_with_prefix_of_digits(target, digits):  # Time: O(len(digits))
     result = 0
     product, total = 1, 0
     for i, x in enumerate(digits):
@@ -34,8 +34,8 @@ def f(x):  # Time: O(len(digits)^2)
     result = 0
     for target in range(1, 9*len(digits)+1):
         for l in range(1, len(digits)):
-            result += count_interesting_integers_with_number_of_digits(target, l)
-        result += count_interesting_integers_with_prefix_of_digits(target, digits)
+            result += count_with_number_of_digits(target, l)
+        result += count_with_prefix_of_digits(target, digits)
     return result
 
 def interesting_integers():
