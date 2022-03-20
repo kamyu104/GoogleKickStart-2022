@@ -8,14 +8,7 @@
 #
 
 def check(s):
-    if len(s) <= 4:
-        return True
-    left, right = 0, len(s)-1
-    while left < right:
-        if s[left] != s[right]:
-            return True
-        left, right = left+1, right-1
-    return False
+    return len(s) <= 4 or s != s[::-1]
 
 def dp(s):
     dp = {''}
