@@ -21,12 +21,10 @@ def count_interesting_integers_with_number_of_digits(target, l):  # Time: O(1)
 def count_interesting_integers_with_prefix_of_digits(target, digits):  # Time: O(len(digits))
     result = 0
     product, total = 1, 0
-    for i in range(len(digits)+1):
-        if i == len(digits):
-            result += int(product%total == 0 and total == target)
-            break
-        result += sum(memoization((len(digits)-1)-i, (product*x)%target, total+x, target) for x in range(int(i == 0), digits[i]))
-        product, total = (product*digits[i])%target, total+digits[i]
+    for i, x in enumerate(digits):
+        result += sum(memoization((len(digits)-1)-i, (product*x)%target, total+x, target) for x in range(int(i == 0), x))
+        product, total = (product*x)%target, total+x
+    result += int(product%total == 0 and total == target)
     return result
 
 def f(x):  # Time: O(len(digits)^2)
