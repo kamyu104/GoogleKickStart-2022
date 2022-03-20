@@ -44,5 +44,5 @@ def interesting_integers():
     return f(B)-f(A-1)
 
 lookup = {}
-for case in range(eval(input())):
+for case in range(int(input())):
     print('Case #%d: %s' % (case+1, interesting_integers()))
