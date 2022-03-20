@@ -13,7 +13,7 @@ from functools import lru_cache
 def g(l, product, total, target):  # Total Time: O(M * (9M)^3)
     if l == 0:
         return int(total == target and product == 0)
-    return sum(g(l-1, (product*x)%target, total+x, target) for x in range(0, 9+1))
+    return sum(g(l-1, (product*x)%target, total+x, target) for x in range(9+1))
 
 def count_interesting_integers_with_number_of_digits(target, l):  # Time: O(1)
     return sum(g(l-1, x%target, x, target) for x in range(1, 9+1))
