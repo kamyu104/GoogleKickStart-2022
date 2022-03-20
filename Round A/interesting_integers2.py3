@@ -15,7 +15,7 @@ def norm(x):  # Time: O(logx)
         return 0
     for p, p_bound in FACT:
         while x%p == 0 and (x//p)%p_bound == 0:
-           x //= p
+            x //= p
     return x
 
 @lru_cache(None)  # lazily precompute
