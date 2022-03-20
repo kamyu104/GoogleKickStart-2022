@@ -20,13 +20,7 @@ def check(s):
 def dp(s):
     dp = {''}
     for c in s:
-        new_dp = set()
-        for x in dp:
-            for y in (['0', '1'] if c == '?' else [c]):
-                z = x[-5:]+y
-                if check(z[-5:]) and check(z[-6:]):
-                    new_dp.add(z[-5:])
-        dp = new_dp
+        dp = {y[-5:] for x in dp for y in ([x+'0', x+'1'] if c == '?' else [x+c]) if check(y[-5:]) and check(y[-6:])}
     return dp
         
 def palindrome_free_strings():
