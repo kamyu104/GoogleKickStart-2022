@@ -24,7 +24,7 @@ def count_interesting_integers_with_prefix_of_digits(target, digits):  # Time: O
     for i in range(len(digits)+1):
         if i == len(digits):
             result += int(product%total == 0 and total == target)
-            continue
+            break
         result += sum(memoization((len(digits)-1)-i, (product*x)%target, total+x, target) for x in range(int(i == 0), digits[i]))
         product, total = (product*digits[i])%target, total+digits[i]
     return result
