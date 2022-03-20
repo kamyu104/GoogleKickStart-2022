@@ -24,12 +24,10 @@ def count_with_prefix_of_digits(target, digits):  # Time: O(len(digits))
     for i, x in enumerate(digits):
         result += sum(memoization(target, (len(digits)-1)-i, (product*x)%target, total+x) for x in range(int(i == 0), x))
         product, total = (product*x)%target, total+x
-    result += int(product%total == 0 and total == target)
+    result += int(total == target and product%total == 0)
     return result
 
 def f(x):  # Time: O(len(digits)^2)
-    if x == 0:
-        return 0
     digits = list(map(int, str(x)))
     result = 0
     for target in range(1, 9*len(digits)+1):
