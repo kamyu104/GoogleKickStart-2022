@@ -7,7 +7,7 @@
 # Space: O(N)
 #
 
-def any_palindrome(s, i):
+def check(s, i):
     for left, right in [(i-4, i), (i-5, i)]:
         if left < 0:
             continue
@@ -16,10 +16,10 @@ def any_palindrome(s, i):
                 break
             left, right = left+1, right-1
         if left >= right:
-            return True
-    return False
+            return False
+    return True
 
-def check(s):  # backtrack only the valid states, of which number is O(N)
+def backtracking(s):  # backtrack only the valid states, of which number is O(N)
     lookup = {i for i, x in enumerate(s) if x == '?'}
     stk = []
     i = 0
@@ -27,7 +27,7 @@ def check(s):  # backtrack only the valid states, of which number is O(N)
         if i in lookup:
             s[i] = '0'
             stk.append(i)
-        while any_palindrome(s, i):
+        while not check(s, i):
             if not stk:
                 return False
             i = stk.pop()
@@ -38,7 +38,7 @@ def check(s):  # backtrack only the valid states, of which number is O(N)
 def palindrome_free_strings():
     N = int(input().strip())
     S = list(input().strip())
-    return "POSSIBLE" if check(S) else "IMPOSSIBLE"
+    return "POSSIBLE" if backtracking(S) else "IMPOSSIBLE"
 
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, palindrome_free_strings()))
