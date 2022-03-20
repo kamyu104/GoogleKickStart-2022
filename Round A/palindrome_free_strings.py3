@@ -35,10 +35,10 @@ def check(s):
         i += 1
     return True
     
-def palinedrome_free_strings():
-    n = int(input().strip())
-    s = list(input().strip())
-    return "POSSIBLE" if check(s) else "IMPOSSIBLE"
+def palindrome_free_strings():
+    N = int(input().strip())
+    S = list(input().strip())
+    return "POSSIBLE" if check(S) else "IMPOSSIBLE"
 
 for case in range(int(input())):
-    print('Case #%d: %s' % (case+1, palinedrome_free_strings()))
+    print('Case #%d: %s' % (case+1, palindrome_free_strings()))
