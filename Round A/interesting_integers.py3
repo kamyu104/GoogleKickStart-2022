@@ -11,7 +11,7 @@
 from functools import lru_cache
 
 @lru_cache(None)  # lazily precompute
-def memoization(target, l, product, total):  # Total Time: O(log(MAX_B) * (9log(MAX_B))^3)
+def memoization(target, l, product, total):  # Total Time: O(log(MAX_B) * (9log(MAX_B))^3) = 2406896 (by memoization.cache_info())
     if l == 0:
         return int(total == target and product == 0)
     return sum(memoization(target, l-1, (product*x)%target, total+x) for x in range(10))
