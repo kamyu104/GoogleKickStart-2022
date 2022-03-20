@@ -10,7 +10,7 @@
 def challenge_nine():
     N = int(input().strip())
     s = list(map(int, str(N)))
-    x = (9-sum(s))%9
+    x = -sum(s)%9
     for i in range(int(x == 0), len(s)):
         if x < s[i]:
             s.insert(i, x)
