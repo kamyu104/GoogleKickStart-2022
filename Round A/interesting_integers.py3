@@ -32,12 +32,12 @@ def f(x):  # Time: O(len(digits)^2)
     if x == 0:
         return 0
     digits = list(map(int, str(x)))
-    count = 0
+    result = 0
     for target in range(1, 9*len(digits)+1):
         for l in range(1, len(digits)):
-            count += count_interesting_integers_with_number_of_digits(target, l)
-        count += count_interesting_integers_with_prefix_of_digits(target, digits)
-    return count
+            result += count_interesting_integers_with_number_of_digits(target, l)
+        result += count_interesting_integers_with_prefix_of_digits(target, digits)
+    return result
 
 def interesting_integers():
     A, B = list(map(int, input().strip().split()))
