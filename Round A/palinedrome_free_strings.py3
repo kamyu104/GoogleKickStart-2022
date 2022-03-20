@@ -11,14 +11,12 @@ def any_palindrome(s, i):
     for left, right in [(i-4, i), (i-5, i)]:
         if left < 0:
             continue
-        cnt = (right-left+1)//2
         while left < right:
             if s[left] != s[right]:
                 break
-            cnt -= 1
-            if cnt == 0:
-                return True
             left, right = left+1, right-1
+        if left >= right:
+            return True
     return False
 
 def check(s):
