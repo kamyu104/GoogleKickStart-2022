@@ -3,18 +3,18 @@
 # Google Kick Start 2022 Round A - Problem D. Interesting Integers
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb33e/00000000009e73ea
 #
-# Time:  O(M * (9M)^3), M is MAX_DIGITS_LEN
+# Time:  O(M * (9M)^3), M is max(len(digits))
 # Space: O(M * (9M)^3)
 #
 
-def g(l, product, total, target):  # Time: O(M * (9M)^3)
+def g(l, product, total, target):  # Total Time: O(M * (9M)^3)
     if l == 0:
         return int(total == target and product == 0)
     if (l, product, total, target) not in lookup:
         lookup[(l, product, total, target)] = sum(g(l-1, (product*x)%target, total+x, target) for x in range(0, 9+1))
     return lookup[(l, product, total, target)]
 
-def count_interesting_integers_with_number_of_digits(target, l):
+def count_interesting_integers_with_number_of_digits(target, l):  # Time: O(1)
     return sum(g(l-1, x%target, x, target) for x in range(1, 9+1))
 
 def count_interesting_integers_with_prefix_of_digits(target, digits):  # Time: O(len(digits))
