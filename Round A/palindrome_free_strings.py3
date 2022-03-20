@@ -7,17 +7,8 @@
 # Space: O(N)
 #
 
-def check(s, i):
-    for left, right in [(i-4, i), (i-5, i)]:
-        if left < 0:
-            continue
-        while left < right:
-            if s[left] != s[right]:
-                break
-            left, right = left+1, right-1
-        if left >= right:
-            return False
-    return True
+def check(s):
+    return len(s) <= 4 or s != s[::-1]
 
 def iter_backtracking(s):  # backtrack only the valid states, of which number is O(N)
     lookup = {i for i, x in enumerate(s) if x == '?'}
@@ -27,7 +18,7 @@ def iter_backtracking(s):  # backtrack only the valid states, of which number is
         if i in lookup:
             s[i] = '0'
             stk.append(i)
-        while not check(s, i):
+        while not (check(s[i-4:i+1]) and check(s[i-5:i+1])):
             if not stk:
                 return False
             i = stk.pop()
