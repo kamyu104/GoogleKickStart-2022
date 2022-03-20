@@ -24,7 +24,7 @@ def count_with_prefix_of_digits(target, digits):  # Time: O(len(digits))
     for i, x in enumerate(digits):
         result += sum(memoization(target, (len(digits)-1)-i, (product*x)%target, total+x) for x in range(int(i == 0), x))
         product, total = (product*x)%target, total+x
-    result += int(total == target and product%total == 0)
+    result += memoization(target, 0, product, total)
     return result
 
 def f(x):  # Time: O(len(digits)^2)
