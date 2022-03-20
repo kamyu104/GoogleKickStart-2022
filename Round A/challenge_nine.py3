@@ -11,12 +11,7 @@ def challenge_nine():
     N = int(input().strip())
     s = list(map(int, str(N)))
     x = -sum(s)%9
-    for i in range(int(x == 0), len(s)):
-        if x < s[i]:
-            s.insert(i, x)
-            break
-    else:
-        s.insert(len(s), x)
+    s.insert(next((i for i in range(int(x == 0), len(s)) if s[i] > x), len(s)), x)
     return "".join(map(str, s))
 
 for case in range(int(input())):
