@@ -34,7 +34,7 @@ def check(s):
             s[i] = '1'
         i += 1
     return True
-    
+
 def palindrome_free_strings():
     N = int(input().strip())
     S = list(input().strip())
