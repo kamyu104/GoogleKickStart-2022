@@ -19,7 +19,7 @@ def any_palindrome(s, i):
             return True
     return False
 
-def check(s):
+def check(s):  # backtrack only the valid states, of which number is O(N)
     lookup = {i for i, x in enumerate(s) if x == '?'}
     stk = []
     i = 0
