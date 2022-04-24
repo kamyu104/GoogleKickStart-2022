@@ -45,7 +45,6 @@ def valid(prev, curr, edges):
     if prev[1]%2 == curr[1]%2 == 0: return ((r, c-1), (r, c)) not in edges
     if prev[1]%2 == curr[1]%2 == 1: return ((r, c), (r, c+1)) not in edges
 
-    
 def hamiltonian_tour():
     R, C = map(int, input().split())
     B = [input() for _ in range(R)]
