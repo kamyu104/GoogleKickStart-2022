@@ -22,8 +22,8 @@ def iter_dfs(R, C, B):
             dr, dc, di = DIRECTIONS[d]
             if i+1 < 3:
                 stk.append((2, ((r+dr, c+dc), (d+1)%4, i+1)))
-            dr, dc, di2 = DIRECTIONS[(d-1)%4]
-            nr, nc = r+dr, c+dc
+            dr2, dc2, di2 = DIRECTIONS[(d-1)%4]
+            nr, nc = r+dr2, c+dc2
             if not (0 <= nr < 2*R and 0 <= nc < 2*C and B[nr//2][nc//2] == '*'):
                 result.append(di)
                 continue
