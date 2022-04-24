@@ -28,8 +28,6 @@ def spanning_tree(B):
 def check(prev, curr, edges):
     if (prev[0]//2, prev[1]//2) != (curr[0]//2, curr[1]//2):
         return True
-    if prev > curr:
-        prev, curr = curr, prev
     r, c = prev[0]//2, prev[1]//2
     if prev[0]%2 == curr[0]%2 == 0: return ((r-1, c), (r, c)) not in edges
     if prev[0]%2 == curr[0]%2 == 1: return ((r, c), (r+1, c)) not in edges
