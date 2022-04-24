@@ -14,22 +14,22 @@ def iter_dfs(R, C, B):
     while stk:
         step, args = stk.pop()
         if step == 1:
-            (r, c), d = args
+            (r, c), i = args
             B[r//2][c//2] = '#'
-            stk.append((2, ((r, c), d, 0)))
+            stk.append((2, ((r, c), i, 0)))
         elif step == 2:
-            (r, c), d, i = args
-            dr, dc, di = DIRECTIONS[d]
-            if i+1 < 3:
-                stk.append((2, ((r+dr, c+dc), (d+1)%4, i+1)))
-            dr2, dc2, di2 = DIRECTIONS[(d-1)%4]
+            (r, c), i, cnt = args
+            dr, dc, d = DIRECTIONS[i]
+            if cnt+1 < 3:
+                stk.append((2, ((r+dr, c+dc), (i+1)%4, cnt+1)))
+            dr2, dc2, d2 = DIRECTIONS[(i-1)%4]
             nr, nc = r+dr2, c+dc2
             if not (0 <= nr < 2*R and 0 <= nc < 2*C and B[nr//2][nc//2] == '*'):
-                result.append(di)
+                result.append(d)
                 continue
-            result.append(di2)
-            stk.append((3, (DIRECTIONS[(d+1)%4][-1],)))
-            stk.append((1, ((nr, nc), (d-1)%4)))
+            result.append(d2)
+            stk.append((3, (DIRECTIONS[(i+1)%4][-1],)))
+            stk.append((1, ((nr, nc), (i-1)%4)))
         elif step == 3:
             last = args[0]
             result.append(last)
@@ -44,4 +44,4 @@ def hamiltonian_tour():
 
 DIRECTIONS = [(0, 1, 'E'), (1, 0, 'S'), (0, -1, 'W'), (-1, 0, 'N')]
 for case in range(int(input())):
-    print('Case #%d: %s' % (case+1, hamiltonian_tour()))
+    print('Case #%i: %s' % (case+1, hamiltonian_tour()))
