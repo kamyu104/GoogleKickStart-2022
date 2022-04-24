@@ -37,7 +37,7 @@ def check(prev, curr, walls):
 def wall_follower(B, walls):
     result = []
     r, c = (0, 0)
-    i = 3  # face north at begin
+    i = 3  # facing north at the beginning as we expect to be facing north at the end
     while not (result and (r, c) == (0, 0)):
         for j in reversed(range(i-1, i+2)):  # right-hand rule
             j %= len(DIRECTIONS)
