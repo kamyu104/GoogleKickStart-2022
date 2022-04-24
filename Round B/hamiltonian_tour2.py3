@@ -43,9 +43,7 @@ def wall_follower(B, edges):
             j %= len(DIRECTIONS)
             dr, dc, d = DIRECTIONS[j]
             nr, nc = r+dr, c+dc
-            if 0 <= nr < 2*len(B) and 0 <= nc < 2*len(B[0]) and \
-               B[nr//2][nc//2] == '*' and \
-               check((r, c), (nr, nc), edges):
+            if 0 <= nr < 2*len(B) and 0 <= nc < 2*len(B[0]) and B[nr//2][nc//2] == '*' and check((r, c), (nr, nc), edges):
                 break
         r, c = nr, nc
         i = j
