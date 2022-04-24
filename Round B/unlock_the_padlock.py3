@@ -8,7 +8,7 @@
 #
 
 def unlock_the_padlock():
-    def f(left, right, x, lookup):
+    def f(left, right, x, lookup):  # use lookup instead of lru_cache which results in MLE in Python3
         if (left, right, x) not in lookup:
             l = left
             while l <= right and V[l] == V[left]:
