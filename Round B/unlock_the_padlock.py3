@@ -9,8 +9,6 @@
 
 def unlock_the_padlock():
     def f(left, right, x, lookup):
-        if left > right:
-            return 0
         if (left, right, x) not in lookup:
             l = left
             while l <= right and V[l] == V[left]:
@@ -18,8 +16,8 @@ def unlock_the_padlock():
             r = right
             while r >= left and V[r] == V[right]:
                 r -= 1
-            lookup[left, right, x] = min(f(l, right, V[left], lookup)+min((V[left]-x)%D, D-(V[left]-x)%D),
-                                         f(left, r, V[right], lookup)+min((V[right]-x)%D, D-(V[right]-x)%D))
+            lookup[left, right, x] = min((f(l, right, V[left], lookup) if l <= right else 0) + min((V[left]-x)%D, D-(V[left]-x)%D),
+                                         (f(left, r, V[right], lookup) if left <= r else 0) + min((V[right]-x)%D, D-(V[right]-x)%D))
         return lookup[left, right, x]
 
     N, D = map(int, input().split())
