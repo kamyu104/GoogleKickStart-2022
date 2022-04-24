@@ -45,6 +45,26 @@ def valid(prev, curr, edges):
     if prev[1]%2 == curr[1]%2 == 0: return ((r, c-1), (r, c)) not in edges
     if prev[1]%2 == curr[1]%2 == 1: return ((r, c), (r, c+1)) not in edges
 
+def wall_follower(B, edges):
+    result = []
+    lookup = [[False]*(2*len(B[0])) for _ in range(2*len(B))]
+    r, c = (0, 0)
+    i = 3
+    while not (result and (r, c) == (0, 0)):
+        for j in reversed(range(i-1, i+2)):  # right-hand rule
+            j %= 4
+            dr, dc, _ = DIRECTIONS[j]
+            nr, nc = r+dr, c+dc
+            if 0 <= nr < 2*len(B) and 0 <= nc < 2*len(B[0]) and \
+               B[nr//2][nc//2] == '*' and not lookup[nr][nc] and \
+               valid((r, c), (nr, nc), edges):
+                break
+        i = j
+        r, c = r+dr, c+dc
+        lookup[r][c] = True
+        result.append(DIRECTIONS[i][-1])
+    return result
+    
 def hamiltonian_tour():
     R, C = map(int, input().split())
     B = [input() for _ in range(R)]
@@ -60,26 +80,7 @@ def hamiltonian_tour():
                 edges.add(((i-1, j), (i, j)))
             if j and B[i][j-1] == '*' and uf.union_set(i*C+(j-1), i*C+j):
                 edges.add(((i, j-1), (i, j)))
-    if uf.cnt-cnt != 1:
-        return "IMPOSSIBLE"
-    result = []
-    lookup = [[False]*(2*C) for _ in range(2*R)]
-    r, c = (0, 0)
-    i = 2
-    while not (result and (r, c) == (0, 0)):
-        for j in range(i-1, i+2):  # left-hand rule
-            j %= 4
-            dr, dc, _ = DIRECTIONS[j]
-            nr, nc = r+dr, c+dc
-            if 0 <= nr < 2*R and 0 <= nc < 2*C and \
-               B[nr//2][nc//2] == '*' and not lookup[nr][nc] and \
-               valid((r, c), (nr, nc), edges):
-                break
-        i = j
-        r, c = r+dr, c+dc
-        lookup[r][c] = True
-        result.append(DIRECTIONS[i][-1])
-    return "".join(result)
+    return "".join(wall_follower(B, edges)) if uf.cnt-cnt == 1 else "IMPOSSIBLE"
 
 DIRECTIONS = [(0, 1, 'E'), (1, 0, 'S'), (0, -1, 'W'), (-1, 0, 'N')]
 for case in range(int(input())):
