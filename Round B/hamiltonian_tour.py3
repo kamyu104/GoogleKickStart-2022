@@ -48,13 +48,12 @@ def iter_dfs(R, C, B):
                 continue
             if parent:
                 merge_node(2*C, curr, parent, nxts)
-            stk.append((2, (curr, 3)))
+            stk.append((2, (curr, 0)))
         elif step == 2:
             curr, i = args
-            if i < 0:
-                continue
             nr, nc = curr[0]+DIRECTIONS[i][0], curr[1]+DIRECTIONS[i][1]
-            stk.append((2, (curr, i-1)))
+            if i+1 < 4:
+                stk.append((2, (curr, i+1)))
             if not (0 <= nr < R and 0 <= nc < C and B[nr][nc] == '*'):
                 continue
             stk.append((1, ((nr, nc), curr)))
@@ -64,7 +63,7 @@ def hamiltonian_tour():
     R, C = map(int, input().split())
     B = [input() for _ in range(R)]
     nxts = iter_dfs(R, C, B)
-    if sum(x != -1 for x in nxts) != 4*(R*C-sum(B[i][j] == '#' for i in range(R) for j in range(C))):
+    if nxts.count(-1) != 4*sum(row.count('#') for row in B):
         return "IMPOSSIBLE"
     result = []
     curr, prev = 0, -1

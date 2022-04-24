@@ -59,7 +59,7 @@ def hamiltonian_tour():
     B = [input() for _ in range(R)]
     edges = spanning_tree(B)
     result = wall_follower(B, edges)
-    return "".join(result) if len(result) == 4*(R*C-sum(B[i][j] == '#' for i in range(R) for j in range(C))) else "IMPOSSIBLE"
+    return "".join(result) if len(result) == 4*(R*C-sum(row.count('#') for row in B)) else "IMPOSSIBLE"
 
 DIRECTIONS = [(0, 1, 'E'), (1, 0, 'S'), (0, -1, 'W'), (-1, 0, 'N')]
 for case in range(int(input())):
