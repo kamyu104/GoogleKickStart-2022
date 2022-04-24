@@ -25,7 +25,7 @@ def spanning_tree(B):
         q = new_q
     return edges
 
-def valid(prev, curr, edges):
+def check(prev, curr, edges):
     if (prev[0]//2, prev[1]//2) != (curr[0]//2, curr[1]//2):
         return True
     if prev > curr:
@@ -47,7 +47,7 @@ def wall_follower(B, edges):
             nr, nc = r+dr, c+dc
             if 0 <= nr < 2*len(B) and 0 <= nc < 2*len(B[0]) and \
                B[nr//2][nc//2] == '*' and \
-               valid((r, c), (nr, nc), edges):
+               check((r, c), (nr, nc), edges):
                 break
         r, c = nr, nc
         i = j
