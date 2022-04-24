@@ -67,10 +67,10 @@ def hamiltonian_tour():
     lookup = [[False]*(2*C) for _ in range(2*R)]
     r, c = (0, 0)
     i = 2
-    while not (i != 2 and (r, c) == (0, 0)):
+    while not (result and (r, c) == (0, 0)):
         for j in range(i-1, i+2):  # left-hand rule
             j %= 4
-            dr, dc = DIRECTIONS[j]
+            dr, dc, _ = DIRECTIONS[j]
             nr, nc = r+dr, c+dc
             if 0 <= nr < 2*R and 0 <= nc < 2*C and \
                B[nr//2][nc//2] == '*' and not lookup[nr][nc] and \
@@ -79,10 +79,9 @@ def hamiltonian_tour():
         i = j
         r, c = r+dr, c+dc
         lookup[r][c] = True
-        result.append(LOOKUP[i])
+        result.append(DIRECTIONS[i][-1])
     return "".join(result)
 
-LOOKUP = "ESWN"
-DIRECTIONS = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+DIRECTIONS = [(0, 1, 'E'), (1, 0, 'S'), (0, -1, 'W'), (-1, 0, 'N')]
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, hamiltonian_tour()))
