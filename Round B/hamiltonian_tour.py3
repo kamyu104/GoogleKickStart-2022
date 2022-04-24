@@ -21,9 +21,8 @@ def create_node(n, curr, nxts):
     if nxts[r*n+c] != -1:
         return False
     for dr, dc in DIRECTIONS:
-        nr, nc = r+dr, c+dc
-        nxts[r*n+c] = nr*n+nc
-        r, c = nr, nc
+        nxts[r*n+c] = (r+dr)*n+(c+dc)
+        r, c = r+dr, c+dc
     return True
 
 def merge_node(n, curr, parent, nxts):
