@@ -30,7 +30,7 @@ def iter_dfs(R, C, B):
                 result.append(di)
                 continue
             result.append(di2)
-            stk.append((3, (DIRECTIONS[((d-1)%4+2)%4][-1],)))
+            stk.append((3, (DIRECTIONS[(d+1)%4][-1],)))
             stk.append((1, ((nr, nc), (d-1)%4)))
         elif step == 3:
             last = args[0]
