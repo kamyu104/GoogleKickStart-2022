@@ -42,7 +42,7 @@ def wall_follower(B, edges):
     i = 3  # face north at begin
     while not (result and (r, c) == (0, 0)):
         for j in reversed(range(i-1, i+2)):  # right-hand rule
-            j %= 4
+            j %= len(DIRECTIONS)
             dr, dc, d = DIRECTIONS[j]
             nr, nc = r+dr, c+dc
             if 0 <= nr < 2*len(B) and 0 <= nc < 2*len(B[0]) and \
