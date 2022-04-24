@@ -10,14 +10,8 @@
 def unlock_the_padlock():
     def memoization(left, right, x, lookup):  # use lookup instead of lru_cache which results in MLE in Python3
         if (left, right, x) not in lookup:
-            l = left
-            while l <= right and V[l] == V[left]:
-                l += 1
-            r = right
-            while r >= left and V[r] == V[right]:
-                r -= 1
-            lookup[left, right, x] = min((memoization(l, right, V[left], lookup) if l <= right else 0) + min((V[left]-x)%D, D-(V[left]-x)%D),
-                                         (memoization(left, r, V[right], lookup) if left <= r else 0) + min((V[right]-x)%D, D-(V[right]-x)%D))
+            lookup[left, right, x] = min((memoization(left+1, right, V[left], lookup) if left+1 <= right else 0) + min((V[left]-x)%D, D-(V[left]-x)%D),
+                                         (memoization(left, right-1, V[right], lookup) if left <= right-1 else 0) + min((V[right]-x)%D, D-(V[right]-x)%D))
         return lookup[left, right, x]
 
     N, D = map(int, input().split())
