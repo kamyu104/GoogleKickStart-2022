@@ -25,16 +25,16 @@ def spanning_tree(B):
         q = new_q
     return edges
 
-def check(prev, curr, edges):
+def check(prev, curr, walls):
     if (prev[0]//2, prev[1]//2) != (curr[0]//2, curr[1]//2):
         return True
     r, c = prev[0]//2, prev[1]//2
-    if prev[0]%2 == curr[0]%2 == 0: return ((r-1, c), (r, c)) not in edges
-    if prev[0]%2 == curr[0]%2 == 1: return ((r, c), (r+1, c)) not in edges
-    if prev[1]%2 == curr[1]%2 == 0: return ((r, c-1), (r, c)) not in edges
-    if prev[1]%2 == curr[1]%2 == 1: return ((r, c), (r, c+1)) not in edges
+    if prev[0]%2 == curr[0]%2 == 0: return ((r-1, c), (r, c)) not in walls
+    if prev[0]%2 == curr[0]%2 == 1: return ((r, c), (r+1, c)) not in walls
+    if prev[1]%2 == curr[1]%2 == 0: return ((r, c-1), (r, c)) not in walls
+    if prev[1]%2 == curr[1]%2 == 1: return ((r, c), (r, c+1)) not in walls
 
-def wall_follower(B, edges):
+def wall_follower(B, walls):
     result = []
     r, c = (0, 0)
     i = 3  # face north at begin
@@ -43,7 +43,7 @@ def wall_follower(B, edges):
             j %= len(DIRECTIONS)
             dr, dc, d = DIRECTIONS[j]
             nr, nc = r+dr, c+dc
-            if 0 <= nr < 2*len(B) and 0 <= nc < 2*len(B[0]) and B[nr//2][nc//2] == '*' and check((r, c), (nr, nc), edges):
+            if 0 <= nr < 2*len(B) and 0 <= nc < 2*len(B[0]) and B[nr//2][nc//2] == '*' and check((r, c), (nr, nc), walls):
                 break
         r, c = nr, nc
         i = j
@@ -53,8 +53,8 @@ def wall_follower(B, edges):
 def hamiltonian_tour():
     R, C = map(int, input().split())
     B = [input() for _ in range(R)]
-    edges = spanning_tree(B)
-    result = wall_follower(B, edges)
+    walls = spanning_tree(B)
+    result = wall_follower(B, walls)
     return "".join(result) if len(result) == 4*(R*C-sum(row.count('#') for row in B)) else "IMPOSSIBLE"
 
 DIRECTIONS = [(0, 1, 'E'), (1, 0, 'S'), (0, -1, 'W'), (-1, 0, 'N')]
