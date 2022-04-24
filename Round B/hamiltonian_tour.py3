@@ -10,10 +10,10 @@
 def direction(a, b, n):
     r, c = divmod(a, n)
     nr, nc = divmod(b, n)
-    if nr-r == 1: return 'E'
-    if nc-c == 1: return 'S'
-    if nr-r == -1: return 'W'
-    if nc-c == -1: return 'N'
+    if nr-r == 1: return 'S'
+    if nc-c == 1: return 'E'
+    if nr-r == -1: return 'N'
+    if nc-c == -1: return 'W'
 
 def create_node(n, curr, nxts):
     r, c = curr
