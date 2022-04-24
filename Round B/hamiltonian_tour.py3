@@ -65,11 +65,10 @@ def hamiltonian_tour():
     if nxts.count(-1) != 4*sum(row.count('#') for row in B):
         return "IMPOSSIBLE"
     result = []
-    curr, prev = 0, -1
-    while not (prev != -1 and curr == 0):
-        prev = curr
+    curr = 0
+    while not (result and curr == 0):
+        result.append(direction(curr, nxts[curr], 2*C))
         curr = nxts[curr]
-        result.append(direction(prev, curr, 2*C))
     return "".join(result)
 
 DIRECTIONS = [(0, 1), (1, 0), (0, -1), (-1, 0)]
