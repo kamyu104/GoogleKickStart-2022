@@ -9,7 +9,7 @@
 
 from math import pi
 
-def solution():
+def infinity_area():
     R, A, B = map(int, input().split())
     result = parity = 0
     curr = R
@@ -23,4 +23,4 @@ def solution():
     return pi * result
 
 for case in range(int(input())):
-    print('Case #%d: %s' % (case+1, solution()))
+    print('Case #%d: %s' % (case+1, infinity_area()))
