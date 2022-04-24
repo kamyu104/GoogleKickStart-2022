@@ -9,9 +9,9 @@
 
 def spanning_tree(B):
     edges = set()
-    q = [(0, 0)]
     lookup = [[False]*len(B[0]) for _ in range(len(B))]
     lookup[0][0] = True
+    q = [(0, 0)]
     while q:
         new_q = []
         for r, c in q:
