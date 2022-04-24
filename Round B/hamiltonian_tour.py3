@@ -52,7 +52,7 @@ def iter_dfs(R, C, B):
         elif step == 2:
             curr, i = args
             nr, nc = curr[0]+DIRECTIONS[i][0], curr[1]+DIRECTIONS[i][1]
-            if i+1 < 4:
+            if i+1 < len(DIRECTIONS):
                 stk.append((2, (curr, i+1)))
             if not (0 <= nr < R and 0 <= nc < C and B[nr][nc] == '*'):
                 continue
