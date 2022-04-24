@@ -3,7 +3,7 @@
 # Google Kick Start 2022 Round B - Problem D. Hamiltonian Tour
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caa74/0000000000acf318
 #
-# Time:  O(R * C), pass in PyPy3 but sometimes TLE in Python3
+# Time:  O(R * C)
 # Space: O(R * C)
 #
 
@@ -37,25 +37,25 @@ def merge_node(n, curr, parent, nxts):
         nxts[(2*r+1)*n+(2*c)] = (2*pr+1)*n+(2*pc+1)
         nxts[(2*pr)*n+(2*pc+1)] = (2*r)*n+(2*c)
 
-def iter_dfs(B):
-    nxts = [-1]*((2*len(B))*(2*len(B[0])))
+def iter_dfs(R, C, B):
+    nxts = [-1]*((2*R)*(2*C))
     stk = [(1, ((0, 0), None))]
     while stk:
         step, args = stk.pop()
         if step == 1:
             curr, parent = args
-            if not create_node(2*len(B[0]), curr, nxts):
+            if not create_node(2*C, curr, nxts):
                 continue
             if parent:
-                merge_node(2*len(B[0]), curr, parent, nxts)
-            stk.append((2, (curr, len(DIRECTIONS)-1)))
+                merge_node(2*C, curr, parent, nxts)
+            stk.append((2, (curr, 3)))
         elif step == 2:
             curr, i = args
             if i < 0:
                 continue
             nr, nc = curr[0]+DIRECTIONS[i][0], curr[1]+DIRECTIONS[i][1]
             stk.append((2, (curr, i-1)))
-            if not (0 <= nr < len(B) and 0 <= nc < len(B[0]) and B[nr][nc] == '*'):
+            if not (0 <= nr < R and 0 <= nc < C and B[nr][nc] == '*'):
                 continue
             stk.append((1, ((nr, nc), curr)))
     return nxts
@@ -63,7 +63,7 @@ def iter_dfs(B):
 def hamiltonian_tour():
     R, C = map(int, input().split())
     B = [input() for _ in range(R)]
-    nxts = iter_dfs(B)
+    nxts = iter_dfs(R, C, B)
     if sum(x != -1 for x in nxts) != 4*(R*C-sum(B[i][j] == '#' for i in range(R) for j in range(C))):
         return "IMPOSSIBLE"
     result = []
