@@ -3,7 +3,7 @@
 # Google Kick Start 2022 Round B - Problem D. Hamiltonian Tour
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caa74/0000000000acf318
 #
-# Time:  O(R * C)
+# Time:  O(R * C), pass in PyPy3 but sometimes TLE in Python3
 # Space: O(R * C)
 #
 
