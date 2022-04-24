@@ -47,7 +47,6 @@ def valid(prev, curr, edges):
 
 def wall_follower(B, edges):
     result = []
-    lookup = [[False]*(2*len(B[0])) for _ in range(2*len(B))]
     r, c = (0, 0)
     i = 3
     while not (result and (r, c) == (0, 0)):
@@ -56,12 +55,11 @@ def wall_follower(B, edges):
             dr, dc, _ = DIRECTIONS[j]
             nr, nc = r+dr, c+dc
             if 0 <= nr < 2*len(B) and 0 <= nc < 2*len(B[0]) and \
-               B[nr//2][nc//2] == '*' and not lookup[nr][nc] and \
+               B[nr//2][nc//2] == '*' and \
                valid((r, c), (nr, nc), edges):
                 break
         i = j
         r, c = r+dr, c+dc
-        lookup[r][c] = True
         result.append(DIRECTIONS[i][-1])
     return result
     
