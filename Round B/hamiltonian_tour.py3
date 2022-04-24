@@ -39,13 +39,12 @@ def merge_node(n, curr, parent, nxts):
 
 def iter_dfs(R, C, B):
     nxts = [-1]*((2*R)*(2*C))
+    create_node(2*C, (0, 0), nxts)
     stk = [(1, ((0, 0), None))]
     while stk:
         step, args = stk.pop()
         if step == 1:
             curr, parent = args
-            if not create_node(2*C, curr, nxts):
-                continue
             if parent:
                 merge_node(2*C, curr, parent, nxts)
             stk.append((2, (curr, 0)))
@@ -54,7 +53,7 @@ def iter_dfs(R, C, B):
             nr, nc = curr[0]+DIRECTIONS[i][0], curr[1]+DIRECTIONS[i][1]
             if i+1 < len(DIRECTIONS):
                 stk.append((2, (curr, i+1)))
-            if not (0 <= nr < R and 0 <= nc < C and B[nr][nc] == '*'):
+            if not (0 <= nr < R and 0 <= nc < C and B[nr][nc] == '*' and create_node(2*C, (nr, nc), nxts)):
                 continue
             stk.append((1, ((nr, nc), curr)))
     return nxts
@@ -67,7 +66,7 @@ def hamiltonian_tour():
         return "IMPOSSIBLE"
     result = []
     curr, prev = 0, -1
-    while prev == -1 or curr:
+    while not (prev != -1 and curr == 0):
         prev = curr
         curr = nxts[curr]
         result.append(direction(prev, curr, 2*C))
