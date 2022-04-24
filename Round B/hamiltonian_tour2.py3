@@ -39,19 +39,19 @@ def valid(prev, curr, edges):
 def wall_follower(B, edges):
     result = []
     r, c = (0, 0)
-    i = 3
+    i = 3  # face north at begin
     while not (result and (r, c) == (0, 0)):
         for j in reversed(range(i-1, i+2)):  # right-hand rule
             j %= 4
-            dr, dc, _ = DIRECTIONS[j]
+            dr, dc, d = DIRECTIONS[j]
             nr, nc = r+dr, c+dc
             if 0 <= nr < 2*len(B) and 0 <= nc < 2*len(B[0]) and \
                B[nr//2][nc//2] == '*' and \
                valid((r, c), (nr, nc), edges):
                 break
+        r, c = nr, nc
         i = j
-        r, c = r+dr, c+dc
-        result.append(DIRECTIONS[i][-1])
+        result.append(d)
     return result
     
 def hamiltonian_tour():
