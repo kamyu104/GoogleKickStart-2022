@@ -25,14 +25,13 @@ def spanning_tree(B):
         q = new_q
     return edges
 
-def check(prev, curr, walls):
-    if (prev[0]//2, prev[1]//2) != (curr[0]//2, curr[1]//2):
+def check(parent, curr, walls):
+    if (parent[0]//2, parent[1]//2) != (curr[0]//2, curr[1]//2):
         return True
-    r, c = prev[0]//2, prev[1]//2
-    if prev[0]%2 == curr[0]%2 == 0: return ((r-1, c), (r, c)) not in walls
-    if prev[0]%2 == curr[0]%2 == 1: return ((r, c), (r+1, c)) not in walls
-    if prev[1]%2 == curr[1]%2 == 0: return ((r, c-1), (r, c)) not in walls
-    if prev[1]%2 == curr[1]%2 == 1: return ((r, c), (r, c+1)) not in walls
+    if parent[0]%2 == curr[0]%2:
+        return (((parent[0]-1)//2, parent[1]//2), ((curr[0]+1)//2, curr[1]//2)) not in walls
+    if parent[1]%2 == curr[1]%2:
+        return ((parent[0]//2, (parent[1]-1)//2), (curr[0]//2, (curr[1]+1)//2)) not in walls
 
 def wall_follower(B, walls):
     result = []
