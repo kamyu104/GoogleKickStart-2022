@@ -7,25 +7,24 @@
 # Space: O(N^2)
 #
 
-from functools import lru_cache
-
 def unlock_the_padlock():
-    @lru_cache(None)
-    def f(left, right, x):
+    def f(left, right, x, lookup):
         if left > right:
             return 0
-        l = left
-        while l <= right and V[l] == V[left]:
-            l += 1
-        r = right
-        while r >= left and V[r] == V[right]:
-            r -= 1
-        return min(f(l, right, V[left])+min((V[left]-x)%D, D-(V[left]-x)%D),
-                   f(left, r, V[right])+min((V[right]-x)%D, D-(V[right]-x)%D))
+        if (left, right, x) not in lookup:
+            l = left
+            while l <= right and V[l] == V[left]:
+                l += 1
+            r = right
+            while r >= left and V[r] == V[right]:
+                r -= 1
+            lookup[left, right, x] = min(f(l, right, V[left], lookup)+min((V[left]-x)%D, D-(V[left]-x)%D),
+                                         f(left, r, V[right], lookup)+min((V[right]-x)%D, D-(V[right]-x)%D))
+        return lookup[left, right, x]
 
     N, D = map(int, input().split())
     V = list(map(int, input().split()))
-    return f(0, N-1, 0)
+    return f(0, N-1, 0, {})
 
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, unlock_the_padlock()))
