@@ -53,7 +53,7 @@ def wall_follower(B, edges):
         i = j
         result.append(d)
     return result
-    
+
 def hamiltonian_tour():
     R, C = map(int, input().split())
     B = [input() for _ in range(R)]
