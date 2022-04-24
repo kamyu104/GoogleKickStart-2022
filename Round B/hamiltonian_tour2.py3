@@ -80,8 +80,6 @@ def hamiltonian_tour():
         r, c = r+dr, c+dc
         lookup[r][c] = True
         result.append(LOOKUP[i])
-        if (r, c) == (0, 0):
-            break
     return "".join(result)
 
 LOOKUP = "ESWN"
