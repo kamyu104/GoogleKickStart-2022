@@ -21,7 +21,7 @@
 ## Round B
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
-|A| [Infinity Area](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caa74/0000000000acf079)| [Python3](./Round%20B/infinity_area.py3)| _O(\|P\|)_ | _O(1)_ | Easy | | Math |
+|A| [Infinity Area](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caa74/0000000000acf079)| [Python3](./Round%20B/infinity_area.py3)| _O(logR)_ | _O(1)_ | Easy | | Math |
 |B| [Palindromic Factors](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caa74/0000000000acee89)| [Python3](./Round%20B/palindromic_factors.py3) | _O(sqrt(A) * logA)_ | _O(1)_ | Easy | | Math, String |
 |C| [Unlock the Padlock](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caa74/0000000000acef55)| [Python3](./Round%20B/unlock_the_padlock.py3) | _O(N^2)_ | _O(N^2)_ | Medium | | Memoization |
 |D| [Hamiltonian Tour](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caa74/0000000000acf318)| [Python3](./Round%20B/hamiltonian_tour.py3) [PyPy3](./Round%20B/hamiltonian_tour2.py3) | _O(R * C)_ | _O(R * C)_ | Hard | | DFS, Constructive Algorithms, Spanning Tree, Wall Follower |
