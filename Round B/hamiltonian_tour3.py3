@@ -44,4 +44,4 @@ def hamiltonian_tour():
 
 DIRECTIONS = [(0, 1, 'E'), (1, 0, 'S'), (0, -1, 'W'), (-1, 0, 'N')]
 for case in range(int(input())):
-    print('Case #%i: %s' % (case+1, hamiltonian_tour()))
+    print('Case #%d: %s' % (case+1, hamiltonian_tour()))
