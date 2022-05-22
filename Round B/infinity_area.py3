@@ -12,13 +12,12 @@ from math import pi
 def infinity_area():
     R, A, B = map(int, input().split())
     result = parity = 0
-    curr = R
-    while curr:
-        result += curr**2
+    while R:
+        result += R**2
         if parity == 0:
-            curr *= A
+            R *= A
         else:
-            curr //= B
+            R //= B
         parity ^= 1
     return pi * result
 
