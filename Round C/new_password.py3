@@ -13,10 +13,10 @@ def new_password():
     N = int(input())
     P = list(input())
     result = P[:]
-    for rule, c in ((UPPER, 'A'), (LOWER, 'a'), (DIGIT, '0'), (SPECIAL, '#')):
-        if not any(x in rule for x in P):
-            result.append(c)
-    result.append('A'*(7-len(result)))
+    for requirement in (UPPER, LOWER, DIGIT, SPECIAL):
+        if not any(x in requirement for x in P):
+            result.append(next(iter(requirement)))
+    result.append(next(iter(UPPER))*(7-len(result)))
     return "".join(result)
 
 UPPER = set(ascii_uppercase)
