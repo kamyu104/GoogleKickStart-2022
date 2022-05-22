@@ -16,9 +16,10 @@ def new_password():
     for requirement in (UPPER, LOWER, DIGIT, SPECIAL):
         if not any(x in requirement for x in P):
             result.append(next(iter(requirement)))
-    result.append(next(iter(UPPER))*(7-len(result)))
+    result.append(next(iter(UPPER))*(L-len(result)))
     return "".join(result)
 
+L = 7
 UPPER = set(ascii_uppercase)
 LOWER = set(ascii_lowercase)
 DIGIT = set(str(i) for i in range(10))
