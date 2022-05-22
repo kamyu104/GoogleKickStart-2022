@@ -9,7 +9,7 @@
 
 from collections import deque
 
-def solution():
+def ants_on_a_stick():
     N, L = map(int, input().split())
     P, D = [0]*N, [0]*N
     for i in range(N):
@@ -29,4 +29,4 @@ def solution():
     return " ".join(map(str, result))
 
 for case in range(int(input())):
-    print('Case #%d: %s' % (case+1, solution()))
+    print('Case #%d: %s' % (case+1, ants_on_a_stick()))
