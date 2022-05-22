@@ -25,7 +25,8 @@ def ants_on_a_stick():
         if p == prev:
             if result[-2] > result[-1]:
                 result[-2], result[-1] = result[-1], result[-2]
-        prev = p
+        else:
+            prev = p
     return " ".join(map(str, result))
 
 for case in range(int(input())):
