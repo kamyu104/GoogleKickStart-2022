@@ -23,7 +23,7 @@ def palindromic_deletions():
         for i in reversed(range(N)):
             dp[l%L][i][i] = (1 if l == 1 else 0)
             for j in range(i+1, N):
-                dp[l%L][i][j] = (dp[l%L][i+1][j]+dp[l%L][i][j-1]-dp[l%L][i+1][j-1])%MOD
+                dp[l%L][i][j] = (dp[l%L][i+1][j]+dp[l%L][i][j-1]-dp[l%L][i+1][j-1])%MOD  # inclusion-exclusion principle
                 if S[i] == S[j]:
                     dp[l%L][i][j] = (dp[l%L][i][j]+(1 if l == 2 else dp[(l-2)%L][i+1][j-1]))%MOD
         result = (result+dp[l%L][0][N-1]*inv_nCr(N, l))%MOD
