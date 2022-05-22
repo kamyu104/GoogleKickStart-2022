@@ -23,7 +23,7 @@ def palindromic_deletions():
         dp[l%L] = [[int(l == 0)]*N for _ in range(N)]
         if l >= 1:
             for i in reversed(range(N)):
-                dp[l%L][i][j] = int(l == 1)
+                dp[l%L][i][i] = int(l == 1)
                 for j in range(i+1, N):
                     dp[l%L][i][j] = int(S[i] == S[j])*(dp[(l-2)%L][i+1][j-1])+(dp[l%L][i+1][j]+dp[l%L][i][j-1]-dp[l%L][i+1][j-1])%MOD
         result = (result+dp[l%L][0][N-1]*inv_nCr(N, l))%MOD
