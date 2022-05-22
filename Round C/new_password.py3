@@ -22,6 +22,6 @@ def new_password():
 UPPER = set(ascii_uppercase)
 LOWER = set(ascii_lowercase)
 DIGIT = set(str(i) for i in range(10))
-SPECIAL = set('#@*&')
+SPECIAL = set("#@*&")
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, new_password()))
