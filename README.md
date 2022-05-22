@@ -31,6 +31,6 @@
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [New Password](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb4d1/0000000000b20f15)| [Python3](./Round%20C/new_password.py3)| _O(N)_ | _O(1)_ | Easy | | String |
-|B| [Range Partition](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb4d1/0000000000b20deb)| [Python3](./Round%20C/range_partition.py3) | _O(N)_ | _O(1)_ | Easy | | Math |
+|B| [Range Partition](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb4d1/0000000000b20deb)| [Python3](./Round%20C/range_partition.py3) | _O(N)_ | _O(1)_ | Easy | | Math, Greedy |
 |C| [Ants on a Stick](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb4d1/0000000000b209bc)| [Python3](./Round%20C/ants_on_a_stick.py3) | _O(NlogN)_ | _O(N)_ | Medium | | Sort, Deque |
 |D| [Palindromic Deletions](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb4d1/0000000000b20d16)| [PyPy3](./Round%20C/palindromic_deletions.py3) | _O(N^3)_ | _O(N^2)_ | Hard | | Combinatorics, DP |
