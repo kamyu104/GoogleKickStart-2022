@@ -16,13 +16,18 @@ def ants_on_a_stick():
         P[i], D[i] = map(int, input().split())
     result = []
     ants = deque(sorted(range(N), key=lambda x: P[x]))
+    prev = -1
     for p, d in sorted((P[i], D[i]) if not D[i] else (L-P[i], D[i]) for i in range(N)):
         if not d:
-            result.append((p, ants.popleft()+1))
+            result.append(ants.popleft()+1)
         else:
-            result.append((p, ants.pop()+1))
-    result.sort()
-    return " ".join(map(lambda x:str(x[1]), result))
+            result.append(ants.pop()+1)
+        if p == prev:
+            if result[-2] > result[-1]:
+                result[-2], result[-1] = result[-1], result[-2]
+        else:
+            prev = p
+    return " ".join(map(str, result))
 
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, ants_on_a_stick()))
