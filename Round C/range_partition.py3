@@ -10,9 +10,10 @@
 def range_partition():
     N, X, Y = map(int, input().split())
     total = sum(x for x in range(1, N+1))
-    if total%(X+Y):
+    q, r = divmod(total, X+Y)
+    if r:
         return "IMPOSSIBLE"
-    target = (total//(X+Y))*X
+    target = q*X
     result = []
     for x in reversed(range(1, N+1)):
         if x > target:
