@@ -18,7 +18,7 @@ def palindromic_deletions():
     N = int(input())
     S = input()
     result = 1
-    dp = [[[0]*N for _ in range(N)] for _ in range(L)]  # dp[l][i][j]: number of palindromes of length l in the substring of S[i, j]
+    dp = [[[0]*N for _ in range(N)] for _ in range(L)]  # dp[l%L][i][j]: number of palindromes of length l in the substring of S[i, j]
     for l in range(1, N):
         for i in reversed(range(N)):
             dp[l%L][i][i] = (1 if l == 1 else 0)
