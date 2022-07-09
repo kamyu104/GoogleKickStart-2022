@@ -25,7 +25,7 @@ def count_with_prefix_of_digits(target, digits):  # Time: O(9 * len(digits))
     result += memoization(target, 0, product, total)
     return result
 
-def f(x):  # Time: O((9logx))^2)
+def f(x):  # Time: O((9logx)^2)
     digits = list(map(int, str(x)))
     result = 0
     for target in range(1, 9*len(digits)+1):
