@@ -16,15 +16,12 @@ def touchbar_typing():
     neis = [{}, {}]
     for idx, rng in enumerate([range(M), reversed(range(M))]):
         nei = neis[idx]
-        prev = {}
+        curr = {}
         for i in rng:
             if K[i] not in lookup:
                 continue
-            nei[i] = {}
-            for j, x in prev.items():
-                nei[i][j] = x
-            nei[i][K[i]] = i
-            prev = nei[i]
+            curr[K[i]] = i
+            nei[i] = {j:x for j, x in curr.items()}
     dp = {i:0 for i in range(M) if K[i] in lookup}
     for x in S:
         new_dp = {}
