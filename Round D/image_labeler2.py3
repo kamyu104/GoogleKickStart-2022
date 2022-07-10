@@ -3,33 +3,36 @@
 # Google Kick Start 2022 Round D - Problem A. Image Labeler
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76e11
 #
-# Time:  O(N), pass in PyPy3 but Python3
+# Time:  O(N)
 # Space: O(1)
 #
 
 from random import seed, randint
 
 def nth_element(nums, left, n, right, compare=lambda a, b: a < b):
-    def partition_around_pivot(left, right, pivot_idx, nums, compare):
-        new_pivot_idx = left
-        nums[pivot_idx], nums[right] = nums[right], nums[pivot_idx]
-        for i in range(left, right):
-            if compare(nums[i], nums[right]):
-                nums[i], nums[new_pivot_idx] = nums[new_pivot_idx], nums[i]
-                new_pivot_idx += 1
-
-        nums[right], nums[new_pivot_idx] = nums[new_pivot_idx], nums[right]
-        return new_pivot_idx
+    def tri_partition(nums, left, right, target, compare):
+        mid = left
+        while mid <= right:
+            if nums[mid] == target:
+                mid += 1
+            elif compare(nums[mid], target):
+                nums[left], nums[mid] = nums[mid], nums[left]
+                left += 1
+                mid += 1
+            else:
+                nums[mid], nums[right] = nums[right], nums[mid]
+                right -= 1
+        return left, right
 
     while left <= right:
         pivot_idx = randint(left, right)
-        new_pivot_idx = partition_around_pivot(left, right, pivot_idx, nums, compare)
-        if new_pivot_idx == n:
+        pivot_left, pivot_right = tri_partition(nums, left, right, nums[pivot_idx], compare)
+        if pivot_left <= n <= pivot_right:
             return
-        elif new_pivot_idx > n:
-            right = new_pivot_idx - 1
-        else:  # new_pivot_idx < n
-            left = new_pivot_idx + 1
+        elif pivot_left > n:
+            right = pivot_left-1
+        else:  # pivot_right < n.
+            left = pivot_right+1
 
 def image_labeler():
     N, M = list(map(int, input().split()))

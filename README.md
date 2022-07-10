@@ -38,7 +38,7 @@
 ## Round D
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
-|A| [Image Labeler](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76e11)| [Python3](./Round%20D/image_labeler.py3) [PyPy3](./Round%20D/image_labeler2.py3) | _O(N)_ | _O(1)_ | Easy | | Greedy, Quick Select |
+|A| [Image Labeler](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76e11)| [Python3](./Round%20D/image_labeler.py3) [Python3](./Round%20D/image_labeler2.py3) | _O(N)_ | _O(1)_ | Easy | | Greedy, Quick Select |
 |B| [Maximum Gain](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76fae)| [PyPy3](./Round%20D/maximum_gain.py3) [PyPy3](./Round%20D/maximum_gain2.py3) | _O(K^2 + N + M)_ | _O(N + M + K)_ | Easy | | Sliding Window, Prefix Sum |
 |C| [Touchbar Typing](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76f44)| [PyPy3](./Round%20D/touchbar_typing.py3) | _O(M * MAX_K + N * M)_ | _O(M * MAX_K)_ | Medium | | DP |
 |D| [Suspects and Witnesses](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76db9)| [PyPy3](./Round%20D/suspects_and_witnesses.py3) | _O(N * K)_ | _O(K)_ | Hard | | BFS |
