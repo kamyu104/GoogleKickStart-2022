@@ -23,16 +23,16 @@ def touchbar_typing():
             nei[i] = {}
             for j, x in prev.items():
                 nei[i][j] = x
-            nei[i][K[i]-1] = i
+            nei[i][K[i]] = i
             prev = nei[i]
     dp = {i:0 for i in range(M) if K[i] in lookup}
     for x in S:
         new_dp = {}
         for i, d in dp.items():
             for nei in [neis[0][i], neis[1][i]]:
-                if x-1 not in nei:
+                if x not in nei:
                     continue
-                j = nei[x-1]
+                j = nei[x]
                 if j not in new_dp or new_dp[j] > d+abs(j-i):
                     new_dp[j] = d+abs(j-i)
         dp = new_dp
