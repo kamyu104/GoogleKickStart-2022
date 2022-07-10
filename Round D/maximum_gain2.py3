@@ -7,7 +7,7 @@
 # Space: O(N + M + K)
 #
 
-def max_sum_with_count(A, K):
+def max_sum_with_counts(A, K):
     prefix = [0]*(len(A)+1)
     for i in range(len(A)):
         prefix[i+1] = prefix[i]+A[i]
@@ -19,7 +19,7 @@ def maximum_gain():
     M = int(input())
     B = list(map(int, input().split()))
     K = int(input())
-    cnt1, cnt2 = max_sum_with_count(A, K), max_sum_with_count(B, K)
+    cnt1, cnt2 = max_sum_with_counts(A, K), max_sum_with_counts(B, K)
     return max(cnt1[i]+cnt2[K-i] for i in range(min(K, len(A))+1) if 0 <= K-i <= len(B))
 
 for case in range(int(input())):
