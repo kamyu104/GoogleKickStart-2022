@@ -30,7 +30,7 @@ def touchbar_typing():
         for i, d in enumerate(dp):
             if d == INF:
                 continue
-            for j in [prev[i][x-1], nxt[i][x-1]]:
+            for j in [prev[i+1][x-1], nxt[i][x-1]]:
                 if j != -1:
                     new_dp[j] = min(new_dp[j], d+abs(j-i))
         dp = new_dp
