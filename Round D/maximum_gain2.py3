@@ -20,7 +20,7 @@ def maximum_gain():
     B = list(map(int, input().split()))
     K = int(input())
     cnt1, cnt2 = max_sum(A, K), max_sum(B, K)
-    return max(cnt1[i]+cnt2[K-i] for i in range(min(K, len(A))+1) if 0 <= K-i <= len(B))
+    return max(cnt1[i]+cnt2[K-i] for i in range(max(K-len(B), 0), min(K, len(A))+1))
 
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, maximum_gain()))

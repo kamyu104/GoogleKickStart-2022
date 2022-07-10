@@ -27,7 +27,7 @@ def maximum_gain():
     M = int(input())
     B = list(map(int, input().split()))
     K = int(input())
-    return max(max_sum_with_count(A, i)+max_sum_with_count(B, K-i) for i in range(min(K, len(A))+1) if 0 <= K-i <= len(B))
+    return max(max_sum_with_count(A, i)+max_sum_with_count(B, K-i) for i in range(max(K-len(B), 0), min(K, len(A))+1))
 
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, maximum_gain()))
