@@ -1,4 +1,4 @@
-# [GoogleKickStart 2022](https://codingcompetitions.withgoogle.com/kickstart/archive/2022) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-12%20%2F%2012-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.googlekickstart.2022)
+# [GoogleKickStart 2022](https://codingcompetitions.withgoogle.com/kickstart/archive/2022) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-16%20%2F%2016-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.googlekickstart.2022)
 
 * Python3 solutions of Google Kick Start 2022. Solution begins with `*` means it will get TLE in the largest data set.
 * Total computation amount > `10^8` is not friendly for Python3 to solve in 5 ~ 15 seconds.
@@ -34,3 +34,11 @@
 |B| [Range Partition](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb4d1/0000000000b20deb)| [Python3](./Round%20C/range_partition.py3) | _O(N)_ | _O(1)_ | Easy | | Math, Greedy |
 |C| [Ants on a Stick](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb4d1/0000000000b209bc)| [Python3](./Round%20C/ants_on_a_stick.py3) [Python3](./Round%20C/ants_on_a_stick2.py3) | _O(NlogN)_ | _O(N)_ | Medium | | Sort, Deque |
 |D| [Palindromic Deletions](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb4d1/0000000000b20d16)| [PyPy3](./Round%20C/palindromic_deletions.py3) | _O(N^3)_ | _O(N^2)_ | Hard | | Math, Expected Value, Combinatorics, DP, Inclusion-Exclusion Principle |
+
+## Round D
+| # | Title | Solution | Time | Space | Difficulty | Tag | Note |
+|---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+|A| [Image Labeler](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76e11)| [Python3](./Round%20D/image_labeler.py3)| _O(NlogN)_ | _O(1)_ | Easy | | Greedy |
+|B| [Maximum Gain](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76fae)| [PyPy3](./Round%20D/maximum_gain.py3) [PyPy3](./Round%20D/maximum_gain2.py3) | _O(K^2 + N + K)_ | _O(N + M K)_ | Easy | | Sliding Window, Prefix Sum |
+|C| [Touchbar Typing](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76f44)| [PyPy3](./Round%20D/touchbar_typing.py3) | _O(M * MAX_K + N * M)_ | _O(M * MAX_K)_ | Medium | | DP |
+|D| [Suspects and Witnesses](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76db9)| [PyPy3](./Round%20D/suspects_and_witnesses.py3) | _O(N * K)_ | _O(M + K)_ | Hard | | BFS |
