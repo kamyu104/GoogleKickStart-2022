@@ -3,7 +3,7 @@
 # Google Kick Start 2022 Round D - Problem A. Image Labeler
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76e11
 #
-# Time:  O(N)
+# Time:  O(N) on average
 # Space: O(1)
 #
 
