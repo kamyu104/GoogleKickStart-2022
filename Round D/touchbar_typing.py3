@@ -13,29 +13,23 @@ def touchbar_typing():
     M = int(input())
     K = list(map(int, input().split()))
     lookup = set(S)
-    left, prev = {}, {}
-    for i in range(M):
-        if K[i] not in lookup:
-            continue
-        left[i] = {}
-        for j, x in prev.items():
-            left[i][j] = x
-        left[i][K[i]-1] = i
-        prev = left[i]
-    right, prev = {}, {}
-    for i in reversed(range(M)):
-        if K[i] not in lookup:
-            continue
-        right[i] = {}
-        for j, x in prev.items():
-            right[i][j] = x
-        right[i][K[i]-1] = i
-        prev = right[i]
+    neis = [{}, {}]
+    for idx, rng in enumerate([range(M), reversed(range(M))]):
+        nei = neis[idx]
+        prev = {}
+        for i in rng:
+            if K[i] not in lookup:
+                continue
+            nei[i] = {}
+            for j, x in prev.items():
+                nei[i][j] = x
+            nei[i][K[i]-1] = i
+            prev = nei[i]
     dp = {i:0 for i in range(M) if K[i] in lookup}
     for x in S:
         new_dp = {}
         for i, d in dp.items():
-            for nei in [left[i], right[i]]:
+            for nei in [neis[0][i], neis[1][i]]:
                 if x-1 not in nei:
                     continue
                 j = nei[x-1]
