@@ -24,10 +24,11 @@ def touchbar_typing():
             nxt[i][j] = nxt[i+1][j]
         nxt[i][K[i]-1] = i
     dp = [0]*M
+    INF = N*(M-1)+1
     for x in S:
-        new_dp = [N*(M-1)]*len(dp)
+        new_dp = [INF]*len(dp)
         for i, d in enumerate(dp):
-            if d == N*(M-1):
+            if d == INF:
                 continue
             for j in [prev[i][x-1], nxt[i][x-1]]:
                 if j != -1:
