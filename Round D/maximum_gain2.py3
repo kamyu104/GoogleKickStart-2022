@@ -4,7 +4,7 @@
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76fae
 #
 # Time:  O(K^2 + N + M), pass in PyPy3 but Python3
-# Space: O(N + M + K)
+# Space: O(N + M)
 #
 
 def max_sum_with_counts(A, K):
