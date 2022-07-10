@@ -7,41 +7,42 @@
 # Space: O(N * M)
 #
 
-from collections import defaultdict
-
 def touchbar_typing():
     N = int(input())
     S = list(map(int, input().split()))
     M = int(input())
     K = list(map(int, input().split()))
     lookup = set(S)
-    left = defaultdict(dict)
+    left = {}
     prev = {}
     for i in range(M):
         if K[i] not in lookup:
             continue
+        left[i+1] = {}
         for j, x in prev.items():
             left[i+1][j] = x
         left[i+1][K[i]-1] = i
         prev = left[i+1]
-    right = defaultdict(dict)
+    right = {}
     prev = {}
     for i in reversed(range(M)):
         if K[i] not in lookup:
             continue
+        right[i] = {}
         for j, x in prev.items():
             right[i][j] = x
         right[i][K[i]-1] = i
         prev = right[i]
-    dp = {i:0 for i in range(M)}
+    dp = {i:0 for i in range(M) if K[i] in lookup}
     for x in S:
-        new_dp = defaultdict(lambda:N*(M-1)+1)
+        new_dp = {}
         for i, d in dp.items():
             for nei in [left[i+1], right[i]]:
                 if x-1 not in nei:
                     continue
                 j = nei[x-1]
-                new_dp[j] = min(new_dp[j], d+abs(j-i))
+                if j not in new_dp or new_dp[j] > d+abs(j-i):
+                    new_dp[j] = d+abs(j-i)
         dp = new_dp
     return min(dp.values())
 
