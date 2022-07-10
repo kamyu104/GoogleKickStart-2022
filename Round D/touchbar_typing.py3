@@ -18,11 +18,11 @@ def touchbar_typing():
     for i in range(M):
         if K[i] not in lookup:
             continue
-        left[i+1] = {}
+        left[i] = {}
         for j, x in prev.items():
-            left[i+1][j] = x
-        left[i+1][K[i]-1] = i
-        prev = left[i+1]
+            left[i][j] = x
+        left[i][K[i]-1] = i
+        prev = left[i]
     right = {}
     prev = {}
     for i in reversed(range(M)):
@@ -37,7 +37,7 @@ def touchbar_typing():
     for x in S:
         new_dp = {}
         for i, d in dp.items():
-            for nei in [left[i+1], right[i]]:
+            for nei in [left[i], right[i]]:
                 if x-1 not in nei:
                     continue
                 j = nei[x-1]
