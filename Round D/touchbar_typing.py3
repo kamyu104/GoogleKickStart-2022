@@ -13,8 +13,7 @@ def touchbar_typing():
     M = int(input())
     K = list(map(int, input().split()))
     lookup = set(S)
-    left = {}
-    prev = {}
+    left, prev = {}, {}
     for i in range(M):
         if K[i] not in lookup:
             continue
@@ -23,8 +22,7 @@ def touchbar_typing():
             left[i][j] = x
         left[i][K[i]-1] = i
         prev = left[i]
-    right = {}
-    prev = {}
+    right, prev = {}, {}
     for i in reversed(range(M)):
         if K[i] not in lookup:
             continue
