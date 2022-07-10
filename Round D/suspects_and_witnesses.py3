@@ -4,7 +4,7 @@
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76db9
 #
 # Time:  O(N * K), pass in PyPy3 but Python3
-# Space: O(M + K)
+# Space: O(K)
 #
 
 def bfs(K, adj, i):
