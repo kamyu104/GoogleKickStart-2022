@@ -7,7 +7,7 @@
 # Space: O(1)
 #
 
-def min_sum_with_count(A, total, l):
+def min_sum_with_length(A, total, l):
     result = total
     for i in range(l, len(A)):
         total += A[i]-A[i-l]
@@ -24,7 +24,7 @@ def maximum_gain():
     total1, total2 = sum(A[i] for i in range(max(K-len(B), 0))),  sum(B[i] for i in range(min(K, len(B))))
     result = float("inf")
     for i in range(max(K-len(B), 0), min(K, len(A))+1):
-        result = min(result, min_sum_with_count(A, total1, i)+min_sum_with_count(B, total2, K-i))
+        result = min(result, min_sum_with_length(A, total1, i)+min_sum_with_length(B, total2, K-i))
         if i < len(A):
             total1 += A[i]
         if (K-i)-1 >= 0:
