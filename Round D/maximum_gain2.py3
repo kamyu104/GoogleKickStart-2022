@@ -3,7 +3,7 @@
 # Google Kick Start 2022 Round D - Problem B. Maximum Gain
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76fae
 #
-# Time:  O(K * (N + M)), pass in PyPy3 but Python3
+# Time:  O(K^2 + N + M), pass in PyPy3 but Python3
 # Space: O(1)
 #
 
