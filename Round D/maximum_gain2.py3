@@ -20,7 +20,7 @@ def maximum_gain():
     M = int(input())
     B = list(map(int, input().split()))
     K = int(input())
-    K = N+M-K
+    K = len(A)+len(B)-K
     total1, total2 = sum(A), sum(B)
     curr1, curr2 = sum(A[i] for i in range(max(K-len(B), 0))),  sum(B[i] for i in range(min(K, len(B))))
     result = 0
