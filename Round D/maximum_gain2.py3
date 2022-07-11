@@ -28,7 +28,8 @@ def maximum_gain():
         result = max(result, max_sum_with_count(A, total1, curr1, i)+max_sum_with_count(B, total2, curr2, K-i))
         if i < len(A):
             curr1 += A[i]
-        curr2 -= B[(K-i)-1]
+        if (K-i)-1 >= 0:
+            curr2 -= B[(K-i)-1]
     return result
 
 for case in range(int(input())):
