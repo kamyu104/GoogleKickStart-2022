@@ -4,14 +4,15 @@
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76fae
 #
 # Time:  O(K^2 + N + M), pass in PyPy3 but Python3
-# Space: O(N + M)
+# Space: O(1)
 #
 
-def max_sum(A, K):
-    prefix = [0]*(len(A)+1)
-    for i in range(len(A)):
-        prefix[i+1] = prefix[i]+A[i]
-    return [max(prefix[i]+(prefix[-1]-prefix[-1-(c-i)]) for i in range(c+1)) for c in range(min(K, len(A))+1)]
+def max_sum_with_count(A, total, curr, l):
+    result = curr
+    for i in range(l, len(A)):
+        curr += A[i]-A[i-l]
+        result = min(result, curr)
+    return total-result
 
 def maximum_gain():
     N = int(input())
@@ -19,8 +20,16 @@ def maximum_gain():
     M = int(input())
     B = list(map(int, input().split()))
     K = int(input())
-    cnt1, cnt2 = max_sum(A, K), max_sum(B, K)
-    return max(cnt1[i]+cnt2[K-i] for i in range(max(K-len(B), 0), min(K, len(A))+1))
+    K = N+M-K
+    total1, total2 = sum(A), sum(B)
+    curr1, curr2 = sum(A[i] for i in range(max(K-len(B), 0))),  sum(B[i] for i in range(min(K, len(B))))
+    result = 0
+    for i in range(max(K-len(B), 0), min(K, len(A))+1):
+        result = max(result, max_sum_with_count(A, total1, curr1, i)+max_sum_with_count(B, total2, curr2, K-i))
+        if i < len(A):
+            curr1 += A[i]
+        curr2 -= B[(K-i)-1]
+    return result
 
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, maximum_gain()))
