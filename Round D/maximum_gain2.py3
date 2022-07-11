@@ -7,12 +7,12 @@
 # Space: O(1)
 #
 
-def max_sum_with_count(A, total, curr, l):
-    result = curr
+def min_sum_with_count(A, total, l):
+    result = total
     for i in range(l, len(A)):
-        curr += A[i]-A[i-l]
-        result = min(result, curr)
-    return total-result
+        total += A[i]-A[i-l]
+        result = min(result, total)
+    return result
 
 def maximum_gain():
     N = int(input())
@@ -21,16 +21,15 @@ def maximum_gain():
     B = list(map(int, input().split()))
     K = int(input())
     K = len(A)+len(B)-K
-    total1, total2 = sum(A), sum(B)
-    curr1, curr2 = sum(A[i] for i in range(max(K-len(B), 0))),  sum(B[i] for i in range(min(K, len(B))))
-    result = 0
+    total1, total2 = sum(A[i] for i in range(max(K-len(B), 0))),  sum(B[i] for i in range(min(K, len(B))))
+    result = float("inf")
     for i in range(max(K-len(B), 0), min(K, len(A))+1):
-        result = max(result, max_sum_with_count(A, total1, curr1, i)+max_sum_with_count(B, total2, curr2, K-i))
+        result = min(result, min_sum_with_count(A, total1, i)+min_sum_with_count(B, total2, K-i))
         if i < len(A):
-            curr1 += A[i]
+            total1 += A[i]
         if (K-i)-1 >= 0:
-            curr2 -= B[(K-i)-1]
-    return result
+            total2 -= B[(K-i)-1]
+    return sum(A)+sum(B)-result
 
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, maximum_gain()))
