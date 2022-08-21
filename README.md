@@ -48,7 +48,7 @@
 ## Round E
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
-|A| [Coloring Game](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb0f5/0000000000ba856a)| [Python3](./Round%20E/coloring_game.py3) | _O(1) | _O(1)_ | Easy | | Math |
+|A| [Coloring Game](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb0f5/0000000000ba856a)| [Python3](./Round%20E/coloring_game.py3) | _O(1)_ | _O(1)_ | Easy | | Math |
 |B| [Students and Mentors](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb0f5/0000000000ba84ae)| [Python3](./Round%20E/students_and_mentors.py3) [Python3](./Round%20E/students_and_mentors2.py3) | _O(NlogN)_ | _O(N)_ | Easy | | Sort, Binary Search, Two Pointers |
 |C| [Matching Palindrome](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb0f5/0000000000ba82c5)| [Python3](./Round%20E/matching_palinedrome.py3) | _O(N)_ | _O(N)_ | Medium | | KMP Algorithm |
 |D| [Pizza Delivery](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb0f5/0000000000ba86e6)| [Python3](./Round%20E/pizza_delivery.py3) | _O(M * N^2 * 2^P)_ | _O(N^2 * 2^P)_ | Hard | | DP |
