@@ -7,7 +7,7 @@
 # Space: O(N)
 #
 
-from bisect import bisect_right
+from bisect import bisect_left
 
 def students_and_mentors():
     N = int(input())
@@ -15,7 +15,7 @@ def students_and_mentors():
     sorted_R = sorted((r, i) for i, r in enumerate(R))
     result = [-1]*N
     for i, r in enumerate(R):
-        j = bisect_right(sorted_R, (2*r, N))-1
+        j = bisect_left(sorted_R, (2*r+1,))-1
         if j < 0:
             continue
         if sorted_R[j][1] != i:
