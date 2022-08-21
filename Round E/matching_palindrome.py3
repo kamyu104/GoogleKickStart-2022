@@ -18,7 +18,7 @@ def getPrefix(pattern):
         prefix[i] = j
     return prefix
 
-def matching_palinedrome():
+def matching_palindrome():
     N = int(input())
     P = input()
     PP = P+P
@@ -26,4 +26,4 @@ def matching_palinedrome():
     return PP[prefix[-1]+1:]
 
 for case in range(int(input())):
-    print('Case #%d: %s' % (case+1, matching_palinedrome()))
+    print('Case #%d: %s' % (case+1, matching_palindrome()))
