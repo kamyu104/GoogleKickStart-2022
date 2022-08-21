@@ -1,4 +1,4 @@
-# [GoogleKickStart 2022](https://codingcompetitions.withgoogle.com/kickstart/archive/2022) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-16%20%2F%2016-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.googlekickstart.2022)
+# [GoogleKickStart 2022](https://codingcompetitions.withgoogle.com/kickstart/archive/2022) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-20%20%2F%2020-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.googlekickstart.2022)
 
 * Python3 solutions of Google Kick Start 2022. Solution begins with `*` means it will get TLE in the largest data set.
 * Total computation amount > `10^8` is not friendly for Python3 to solve in 5 ~ 15 seconds.
@@ -10,6 +10,8 @@
 * [Round A](https://github.com/kamyu104/GoogleKickStart-2022#round-a)
 * [Round B](https://github.com/kamyu104/GoogleKickStart-2022#round-b)
 * [Round C](https://github.com/kamyu104/GoogleKickStart-2022#round-c)
+* [Round D](https://github.com/kamyu104/GoogleKickStart-2022#round-d)
+* [Round E](https://github.com/kamyu104/GoogleKickStart-2022#round-e)
 
 ## Round A
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
@@ -42,3 +44,11 @@
 |B| [Maximum Gain](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76fae)| [PyPy3](./Round%20D/maximum_gain.py3) [PyPy3](./Round%20D/maximum_gain2.py3) | _O(K^2 + N + M)_ | _O(1)_ | Easy | | Prefix Sum, Sliding Window, Brute Force |
 |C| [Touchbar Typing](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76f44)| [PyPy3](./Round%20D/touchbar_typing.py3) | _O(N * M)_ | _O(N * M)_ | Medium | | Greedy, DP |
 |D| [Suspects and Witnesses](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76db9)| [PyPy3](./Round%20D/suspects_and_witnesses.py3) | _O(N * K)_ | _O(K)_ | Hard | | Logic-Based, Graph, BFS |
+
+## Round E
+| # | Title | Solution | Time | Space | Difficulty | Tag | Note |
+|---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+|A| [Coloring Game](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb0f5/0000000000ba856a)| [Python3](./Round%20E/coloring_game.py3) | _O(1) | _O(1)_ | Easy | | Math |
+|B| [Students and Mentors](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb0f5/0000000000ba84ae)| [Python3](./Round%20E/students_and_mentors.py3) [Python3](./Round%20E/students_and_mentors2.py3) | _O(NlogN)_ | _O(N)_ | Easy | | Sort, Binary Search, Two Pointers |
+|C| [Matching Palindrome](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb0f5/0000000000ba82c5)| [Python3](./Round%20E/matching_palinedrome.py3) | _O(N)_ | _O(N)_ | Medium | | KMP Algorithm |
+|D| [Pizza Delivery](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb0f5/0000000000ba86e6)| [Python3](./Round%20E/pizza_delivery.py3) | _O(M * N^2 * 2^P)_ | _O(N^2 * 2^P)_ | Hard | | DP |
