@@ -19,9 +19,9 @@ def students_and_mentors():
         if j < 0:
             continue
         if sorted_R[j][1] != i:
-            result[i] = R[sorted_R[j][1]]
+            result[i] = sorted_R[j][0]
         elif j-1 >= 0:
-            result[i] = R[sorted_R[j-1][1]]
+            result[i] = sorted_R[j-1][0]
     return " ".join(map(str, result))
 
 for case in range(int(input())):
