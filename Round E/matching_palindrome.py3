@@ -26,7 +26,7 @@ def matching_palindrome():
     P = input()
     p = manacher(P)
     l = min(p[i] for i in range(2, (len(p)-2)+1) if p[i] != 0 and p[(len(p)-2)-p[i]] == p[i] and p[1+(N-p[i])] == N-p[i])
-    return P[-l:]
+    return P[:l]
 
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, matching_palindrome()))
