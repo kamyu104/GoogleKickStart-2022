@@ -1,7 +1,7 @@
 # Copyright (c) 2022 kamyu. All rights reserved.
 #
-# Google Kick Start 2022 Round E - Problem B. Students and Mentors
-# https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb0f5/0000000000ba84ae
+# Google Kick Start 2022 Round E - Problem D. Pizza Delivery
+# https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb0f5/0000000000ba86e6
 #
 # Time:  O(M * N^2 * 2^P)
 # Space: O(N^2 * 2^P)
