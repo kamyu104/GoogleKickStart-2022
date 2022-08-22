@@ -17,11 +17,7 @@ def is_palindrome(P, left, right):
 def matching_palindrome():
     N = int(input())
     P = input()
-    for l in range(1, len(P)+1):
-        if len(P)%l:
-            continue
-        if is_palindrome(P, 0, l-1) and is_palindrome(P, l, len(P)-1):
-            break
+    l = next(l for l in range(1, len(P)+1) if len(P)%l == 0 and is_palindrome(P, 0, l-1) and is_palindrome(P, l, len(P)-1))
     return P[:l]
 
 for case in range(int(input())):
