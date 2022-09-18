@@ -27,10 +27,9 @@ def story_of_seasons():
             result += g*v
             if q:
                 heappush(max_heap, (-v, q))
-        while seeds and D-seeds[-1][1] >= d:
-            q, l, v = seeds.pop()
-            if D-l == d:
-                heappush(max_heap, (-v, q))
+        while seeds and D-seeds[-1][1] == d:
+            q, _, v = seeds.pop()
+            heappush(max_heap, (-v, q))
         prev = d
     return result
 
