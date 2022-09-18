@@ -20,16 +20,16 @@ def story_of_seasons():
         cnt = 0
         while cnt < (prev-d)*X and max_heap:
             v, q = heappop(max_heap)
-            v = -v
+            v, q = -v, -q
             g = min((prev-d)*X-cnt, q)
             q -= g
             cnt += g
             result += g*v
             if q:
-                heappush(max_heap, (-v, q))
+                heappush(max_heap, (-v, -q))
         while seeds and D-seeds[-1][1] == d:
             q, _, v = seeds.pop()
-            heappush(max_heap, (-v, q))
+            heappush(max_heap, (-v, -q))
         prev = d
     return result
 
