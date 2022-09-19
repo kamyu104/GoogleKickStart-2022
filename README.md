@@ -1,4 +1,4 @@
-# [GoogleKickStart 2022](https://codingcompetitions.withgoogle.com/kickstart/archive/2022) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-20%20%2F%2020-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.googlekickstart.2022)
+# [GoogleKickStart 2022](https://codingcompetitions.withgoogle.com/kickstart/archive/2022) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-24%20%2F%2024-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.googlekickstart.2022)
 
 * Python3 solutions of Google Kick Start 2022. Solution begins with `*` means it will get TLE in the largest data set.
 * Total computation amount > `10^8` is not friendly for Python3 to solve in 5 ~ 15 seconds.
@@ -12,6 +12,7 @@
 * [Round C](https://github.com/kamyu104/GoogleKickStart-2022#round-c)
 * [Round D](https://github.com/kamyu104/GoogleKickStart-2022#round-d)
 * [Round E](https://github.com/kamyu104/GoogleKickStart-2022#round-e)
+* [Round F](https://github.com/kamyu104/GoogleKickStart-2022#round-f)
 
 ## Round A
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
@@ -52,3 +53,11 @@
 |B| [Students and Mentors](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb0f5/0000000000ba84ae)| [Python3](./Round%20E/students_and_mentors.py3) [Python3](./Round%20E/students_and_mentors2.py3) | _O(NlogN)_ | _O(N)_ | Easy | | Sort, Binary Search, Two Pointers |
 |C| [Matching Palindrome](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb0f5/0000000000ba82c5)| [Python3](./Round%20E/matching_palindrome.py3) [Python3](./Round%20E/matching_palindrome2.py3) [Python3](./Round%20E/matching_palindrome3.py3) | _O(N)_ | _O(N)_ | Medium | | Brute Force, Manacher's Algorithm, KMP Algorithm |
 |D| [Pizza Delivery](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb0f5/0000000000ba86e6)| [Python3](./Round%20E/pizza_delivery.py3) | _O(M * N^2 * 2^P)_ | _O(N^2 * 2^P)_ | Hard | | BFS, DP |
+
+## Round F
+| # | Title | Solution | Time | Space | Difficulty | Tag | Note |
+|---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+|A| [Sort the Fabrics](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb409/0000000000beefbb)| [Python3](./Round%20F/coloring_game.py3) | _O(MAX_C * NlogN)_ | _O(MAX_C * N)_ | Easy | | Greedy, Math |
+|B| [Water Container System](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb409/0000000000bef79e)| [Python3](./Round%20F/water_container_system.py3) | _O(N)_ | _O(N)_ | Easy | | BFS |
+|C| [Story of Seasons](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb409/0000000000bef319)| [Python3](./Round%20F/story_of_seasons.py3) | _O(NlogN)_ | _O(N)_ | Medium | | Greedy, Heap |
+|D| [Scheduling a Meeting](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb409/0000000000bef943)| [Python3](./Round%20F/scheduling_a_meeting.py3) | _O(D + N + M)_ | _O(D + N + M)_ | Hard | | Line Sweep, Greedy |
