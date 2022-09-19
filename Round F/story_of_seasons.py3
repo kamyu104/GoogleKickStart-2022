@@ -21,11 +21,11 @@ def story_of_seasons():
     max_heap = []
     prev = D
     for d in sorted(deadlines.keys(), reverse=True):
-        cnt = 0
-        while cnt < (prev-d)*X and max_heap:
+        cnt, total = 0, (prev-d)*X
+        while cnt < total and max_heap:
             v, q = heappop(max_heap)
             v, q = -v, -q
-            c = min((prev-d)*X-cnt, q)
+            c = min(total-cnt, q)
             q -= c
             cnt += c
             result += c*v
