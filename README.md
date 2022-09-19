@@ -57,7 +57,7 @@
 ## Round F
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
-|A| [Sort the Fabrics](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb409/0000000000beefbb)| [Python3](./Round%20F/coloring_game.py3) | _O(MAX_C * NlogN)_ | _O(MAX_C * N)_ | Easy | | Greedy, Math |
+|A| [Sort the Fabrics](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb409/0000000000beefbb)| [Python3](./Round%20F/sort_the_fabrics.py3) | _O(MAX_C * NlogN)_ | _O(MAX_C * N)_ | Easy | | Greedy, Math |
 |B| [Water Container System](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb409/0000000000bef79e)| [Python3](./Round%20F/water_container_system.py3) | _O(N)_ | _O(N)_ | Easy | | BFS |
 |C| [Story of Seasons](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb409/0000000000bef319)| [Python3](./Round%20F/story_of_seasons.py3) | _O(NlogN)_ | _O(N)_ | Medium | | Greedy, Heap |
 |D| [Scheduling a Meeting](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb409/0000000000bef943)| [Python3](./Round%20F/scheduling_a_meeting.py3) | _O(D + N + M)_ | _O(D + N + M)_ | Hard | | Line Sweep, Greedy |
