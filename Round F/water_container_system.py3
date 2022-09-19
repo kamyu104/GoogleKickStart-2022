@@ -29,10 +29,8 @@ def water_container_system():
     adj = [[] for _ in range(N)]
     for _ in range(N-1):
         i, j = map(int, input().split())
-        i -= 1
-        j -= 1
-        adj[i].append(j)
-        adj[j].append(i)
+        adj[i-1].append(j-1)
+        adj[j-1].append(i-1)
     _ = [input() for _ in range(Q)]
     result = 0
     for c in bfs(adj):
