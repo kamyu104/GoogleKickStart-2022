@@ -9,7 +9,7 @@
 
 def scheduling_a_meeting():
     N, K, X, D = map(int, input().split())
-    events = [[] for _ in range(X+D+1)]
+    events = [[] for _ in range(D+X+1)]
     M = int(input())
     for _ in range(M):
         P, L, R = map(int, input().split())
