@@ -8,6 +8,25 @@
 #
 
 def scheduling_a_meeting():
+    def update(curr, kth_cnt, kth_cnt_used_freq):
+        if cnt[p] < kth_cnt:
+            curr += diff
+            if diff == 1 and cnt[p]+1 == kth_cnt:
+                kth_cnt_used_freq += 1
+        elif cnt[p] == kth_cnt:
+            if diff == 1:
+                if kth_cnt_used_freq == freq[kth_cnt]:
+                    curr += 1
+                    kth_cnt += 1
+                    kth_cnt_used_freq = 1
+            else:
+                curr -= 1
+                kth_cnt_used_freq -= 1
+                if kth_cnt_used_freq == 0:
+                    kth_cnt -= 1
+                    kth_cnt_used_freq = freq[kth_cnt]+1
+        return curr, kth_cnt, kth_cnt_used_freq
+
     N, K, X, D = map(int, input().split())
     events = [[] for _ in range(D+X)]
     M = int(input())
@@ -25,22 +44,7 @@ def scheduling_a_meeting():
         if d >= X:
             result = min(result, curr)
         for diff, p in events[d]:
-            if cnt[p] < kth_cnt:
-                curr += diff
-                if diff == 1 and cnt[p]+1 == kth_cnt:
-                    kth_cnt_used_freq += 1
-            elif cnt[p] == kth_cnt:
-                if diff == 1:
-                    if kth_cnt_used_freq == freq[kth_cnt]:
-                        curr += 1
-                        kth_cnt += 1
-                        kth_cnt_used_freq = 1
-                else:
-                    curr -= 1
-                    kth_cnt_used_freq -= 1
-                    if kth_cnt_used_freq == 0:
-                        kth_cnt -= 1
-                        kth_cnt_used_freq = freq[kth_cnt]+1
+            curr, kth_cnt, kth_cnt_used_freq = update(curr, kth_cnt, kth_cnt_used_freq)
             freq[cnt[p]] -= 1
             cnt[p] += diff
             freq[cnt[p]] += 1
