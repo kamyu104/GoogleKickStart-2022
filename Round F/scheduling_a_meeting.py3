@@ -9,12 +9,12 @@
 
 def scheduling_a_meeting():
     N, K, X, D = map(int, input().split())
-    events = [[] for _ in range(D+X+1)]
+    events = [[] for _ in range(D+X)]
     M = int(input())
     for _ in range(M):
         P, L, R = map(int, input().split())
-        events[L+1].append((+1, P-1))
-        events[R+X].append((-1, P-1))
+        events[L].append((+1, P-1))
+        events[R+X-1].append((-1, P-1))
     result = M
     cnt = [0]*N
     freq = [0]*(M+1)
@@ -22,6 +22,8 @@ def scheduling_a_meeting():
     curr = kth_cnt = 0
     kth_cnt_used_freq = K
     for d in range(D+1):
+        if d >= X:
+            result = min(result, curr)
         for diff, p in events[d]:
             if cnt[p] < kth_cnt:
                 curr += diff
@@ -42,8 +44,6 @@ def scheduling_a_meeting():
             freq[cnt[p]] -= 1
             cnt[p] += diff
             freq[cnt[p]] += 1
-        if d >= X:
-            result = min(result, curr)
     return result
 
 for case in range(int(input())):
