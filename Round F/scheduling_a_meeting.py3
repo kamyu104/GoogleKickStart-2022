@@ -28,7 +28,7 @@ def scheduling_a_meeting():
                 if diff == 1 and cnt[p]+1 == kth_cnt:
                     kth_cnt_cnt += 1
             elif cnt[p] == kth_cnt:
-                if diff > 0:
+                if diff == 1:
                     if kth_cnt_cnt == cnt_cnt[kth_cnt]:
                         curr += diff
                         kth_cnt += diff
