@@ -25,10 +25,10 @@ def story_of_seasons():
         while cnt < (prev-d)*X and max_heap:
             v, q = heappop(max_heap)
             v, q = -v, -q
-            g = min((prev-d)*X-cnt, q)
-            q -= g
-            cnt += g
-            result += g*v
+            c = min((prev-d)*X-cnt, q)
+            q -= c
+            cnt += c
+            result += c*v
             if q:
                 heappush(max_heap, (-v, -q))
         for q, v in deadlines[d]:
