@@ -13,8 +13,7 @@ def story_of_seasons():
     D, N, X = map(int, input().split())
     seeds = [list(map(int, input().split())) for _ in range(N)]
     seeds.sort(key=lambda x:x[1])
-    if seeds[-1][1] < D:
-        seeds.append((0, D, 0))
+    seeds.append((0, D, 0))
     result = prev = 0
     max_heap = []
     for Q, L, V in seeds:
