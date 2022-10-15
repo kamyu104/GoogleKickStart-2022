@@ -10,82 +10,44 @@
 from collections import defaultdict
 
 # Template:
-# https://github.com/kamyu104/GoogleCodeJam-2022/blob/main/Round%203/duck_duck_geese.py3
+# https://github.com/kamyu104/LeetCode-Solutions/blob/master/Python/longest-increasing-subsequence-ii.py
 class SegmentTree(object):
     def __init__(self, N,
-                 build_fn=lambda _: float("-inf"),                       # modified
-                 query_fn=lambda x, y: y if x is None else max(x, y),    # modified
-                 update_fn=lambda x, y: y if x is None else max(x, y)):  # modified
-        self.base = N
-        self.H = (N-1).bit_length()
+                 build_fn=lambda _: float("-inf"), # modified
+                 query_fn=lambda x, y: y if x is None else x if y is None else max(x, y),
+                 update_fn=lambda x: x):
+        self.tree = [None]*(2*2**((N-1).bit_length()))
+        self.base = len(self.tree)//2
         self.query_fn = query_fn
         self.update_fn = update_fn
-        self.tree = [None]*(2*N)
-        self.lazy = [None]*N
         for i in range(self.base, self.base+N):
             self.tree[i] = build_fn(i-self.base)
         for i in reversed(range(1, self.base)):
             self.tree[i] = query_fn(self.tree[2*i], self.tree[2*i+1])
 
-    def __apply(self, x, val):
-        self.tree[x] = self.update_fn(self.tree[x], val)
-        if x < self.base:
-            self.lazy[x] = self.update_fn(self.lazy[x], val)
+    def update(self, i, h):
+        x = self.base+i
+        self.tree[x] = self.update_fn(h)
+        while x > 1:
+            x //= 2
+            self.tree[x] = self.query_fn(self.tree[x*2], self.tree[x*2+1])
 
-    def update(self, L, R, h):  # Time: O(logN), Space: O(N)
-        def pull(x):
-            while x > 1:
-                x >>= 1
-                self.tree[x] = self.query_fn(self.tree[x<<1], self.tree[(x<<1)+1])
-                if self.lazy[x] is not None:
-                    self.tree[x] = self.update_fn(self.tree[x], self.lazy[x])
-
+    def query(self, L, R):
         if L > R:
-            return
+            return float("-inf")  # modified
         L += self.base
         R += self.base
-        L0, R0 = L, R
+        left = right = None
         while L <= R:
-            if L & 1:  # is right child
-                self.__apply(L, h)
+            if L & 1:
+                left = self.query_fn(left, self.tree[L])
                 L += 1
-            if R & 1 == 0:  # is left child
-                self.__apply(R, h)
+            if R & 1 == 0:
+                right = self.query_fn(self.tree[R], right)
                 R -= 1
-            L >>= 1
-            R >>= 1
-        pull(L0)
-        pull(R0)
-
-    def query(self, L, R):  # Time: O(logN), Space: O(N)
-        def push(x):
-            n = self.H
-            while n:
-                y = x >> n
-                if self.lazy[y] is not None:
-                    self.__apply(y<<1, self.lazy[y])
-                    self.__apply((y<<1)+1, self.lazy[y])
-                    self.lazy[y] = None
-                n -= 1
-
-        result = None
-        if L > R:
-            return result
-
-        L += self.base
-        R += self.base
-        push(L)
-        push(R)
-        while L <= R:
-            if L & 1:  # is right child
-                result = self.query_fn(result, self.tree[L])
-                L += 1
-            if R & 1 == 0:  # is left child
-                result = self.query_fn(result, self.tree[R])
-                R -= 1
-            L >>= 1
-            R >>= 1
-        return result
+            L //= 2
+            R //= 2
+        return self.query_fn(left, right)
 
 def cute_happy_butterfly():
     N, E = map(int, input().split())
@@ -98,17 +60,17 @@ def cute_happy_butterfly():
         X_set.add(X)
     X_to_idx = {x:i for i, x in enumerate(sorted(X_set))}
     dp = [SegmentTree(len(X_to_idx)) for _ in range(2)]
-    dp[0].update(0, 0, 0)
+    dp[0].update(0, 0)
     for Y in sorted(lookup.keys(), reverse=True):
         lookup[Y].sort()
         for X, C in lookup[Y]:
-            dp[0].update(X_to_idx[X], len(X_to_idx)-1, dp[0].query(X_to_idx[X], X_to_idx[X])+C)
+            dp[0].update(X_to_idx[X], dp[0].query(0, X_to_idx[X])+C)
         for X, C in reversed(lookup[Y]):
-            dp[1].update(0, X_to_idx[X], dp[1].query(X_to_idx[X], X_to_idx[X])+C)
-        mx = [dp[i].tree[1] for i in range(2)]
-        for i in range(2):
-            dp[i].update(0, len(X_to_idx)-1, mx[i^1]-E)
-    return max(dp[i].tree[1] for i in range(2))
+            dp[1].update(X_to_idx[X], dp[1].query(X_to_idx[X], len(X_to_idx)-1)+C)
+        mx = [dp[0].tree[1], dp[1].tree[1]]
+        dp[0].update(0, max(dp[0].query(0, 0), mx[1]-E))
+        dp[1].update(len(X_to_idx)-1, max(dp[1].query(len(X_to_idx)-1, len(X_to_idx)-1), mx[0]-E))
+    return max(dp[0].tree[1], dp[1].tree[1])
 
 X0, Y0, C0 = 0, 10**18, 0
 for case in range(int(input())):
