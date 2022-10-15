@@ -94,18 +94,18 @@ def cute_happy_butterfly():
         X, Y, C = map(int, input().split())
         lookup[Y].append((X, C))
         X_set.add(X)
-    x_to_idx = {x:i for i, x in enumerate(sorted(X_set))}
-    dp = [SegmentTree(len(x_to_idx)) for _ in range(2)]
+    X_to_idx = {x:i for i, x in enumerate(sorted(X_set))}
+    dp = [SegmentTree(len(X_to_idx)) for _ in range(2)]
     dp[0].update(0, 0, 0)
     for Y in sorted(lookup.keys(), reverse=True):
         lookup[Y].sort()
         for X, C in lookup[Y]:
-            dp[0].update(x_to_idx[X], len(x_to_idx)-1, dp[0].query(x_to_idx[X], x_to_idx[X])+C)
+            dp[0].update(X_to_idx[X], len(X_to_idx)-1, dp[0].query(X_to_idx[X], X_to_idx[X])+C)
         for X, C in reversed(lookup[Y]):
-            dp[1].update(0, x_to_idx[X], dp[1].query(x_to_idx[X], x_to_idx[X])+C)
+            dp[1].update(0, X_to_idx[X], dp[1].query(X_to_idx[X], X_to_idx[X])+C)
         mx = [dp[i].tree[1] for i in range(2)]
         for i in range(2):
-            dp[i].update(0, len(x_to_idx)-1, mx[i^1]-E)
+            dp[i].update(0, len(X_to_idx)-1, mx[i^1]-E)
     return max(dp[i].tree[1] for i in range(2))
 
 X0, Y0, C0 = 0, 10**18, 0
