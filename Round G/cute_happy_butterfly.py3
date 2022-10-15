@@ -52,8 +52,7 @@ class SegmentTree(object):
 def cute_happy_butterfly():
     N, E = map(int, input().split())
     lookup = defaultdict(list)
-    lookup[Y0].append((X0, C0))
-    X_set = {X0}
+    X_set = set()
     for _ in range(N):
         X, Y, C = map(int, input().split())
         lookup[Y].append((X, C))
@@ -61,6 +60,7 @@ def cute_happy_butterfly():
     X_to_idx = {x:i for i, x in enumerate(sorted(X_set))}
     dp = [SegmentTree(len(X_to_idx)) for _ in range(2)]
     dp[0].update(0, 0)
+    dp[1].update(len(X_to_idx)-1, -E)
     for Y in sorted(lookup.keys(), reverse=True):
         lookup[Y].sort()
         for X, C in lookup[Y]:
@@ -72,6 +72,5 @@ def cute_happy_butterfly():
         dp[1].update(len(X_to_idx)-1, max(dp[1].query(len(X_to_idx)-1, len(X_to_idx)-1), mx[0]-E))
     return max(dp[0].tree[1], dp[1].tree[1])
 
-X0, Y0, C0 = 0, 10**18, 0
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, cute_happy_butterfly()))
