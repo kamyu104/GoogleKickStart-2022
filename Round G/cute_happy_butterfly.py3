@@ -3,7 +3,7 @@
 # Google Kick Start 2022 Round G - Problem D. Cute Happy Butterfly
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb2e1/0000000000c17b68
 #
-# Time:  O(NlogN)
+# Time:  O(NlogN), pass in PyPy3 but Python3
 # Space: O(N)
 #
 
