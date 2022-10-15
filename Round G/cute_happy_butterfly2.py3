@@ -256,8 +256,8 @@ def cute_happy_butterfly():
     for _ in range(N):
         X, Y, C = map(int, input().split())
         lookup[Y].append((X, C))
-    dp = [{(0, MAX_Y+1):0}, {(-MAX_X, MAX_Y+1):-E}]
-    sl = [SortedList([(0, MAX_Y+1)]), SortedList([(-MAX_X, MAX_Y+1)])]
+    dp = [{(MIN_X, MAX_Y+1):0}, {(-MAX_X, MAX_Y+1):-E}]
+    sl = [SortedList([(MIN_X, MAX_Y+1)]), SortedList([(-MAX_X, MAX_Y+1)])]
     for Y in sorted(lookup.keys(), reverse=True):
         lookup[Y].sort()
         for i, sign, direction in ((0, 1, lambda x: x), (1, -1, reversed)):
@@ -272,6 +272,6 @@ def cute_happy_butterfly():
             update(dp[i], sl[i], 0)
     return max(dp[i][sl[i][-1]] for i in range(2))
 
-MAX_X, MAX_Y = 10**5, 10**9
+MIN_X, MAX_X, MAX_Y = 0, 10**5, 10**9
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, cute_happy_butterfly()))
