@@ -66,7 +66,7 @@ class SegmentTree(object):
         pull(R0)
 
     def query(self, L, R):
-        result = float("-inf")
+        result = float("-inf")  # modified
         if L > R:
             return result
 
