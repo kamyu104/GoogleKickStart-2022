@@ -15,11 +15,11 @@ def happy_subarrays():
         P[i+1] = P[i]+A[i]
     stk = []
     result = curr = 0
-    for p in P:
-        while stk and stk[-1] > p:
-            curr -= stk.pop()
+    for i, p in enumerate(P):
+        while stk and P[stk[-1]] > p:
+            curr -= P[stk.pop()]
         result += len(stk)*p-curr
-        stk.append(p)
+        stk.append(i)
         curr += p
     return result
 
