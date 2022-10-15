@@ -13,7 +13,7 @@ from collections import defaultdict
 # https://github.com/kamyu104/LeetCode-Solutions/blob/master/Python/longest-increasing-subsequence-ii.py
 class SegmentTree(object):
     def __init__(self, N,
-                 build_fn=lambda _: float("-inf"), # modified
+                 build_fn=lambda _: float("-inf"),  # modified
                  query_fn=lambda x, y: y if x is None else x if y is None else max(x, y),
                  update_fn=lambda x: x):
         self.tree = [None]*(2*2**((N-1).bit_length()))
