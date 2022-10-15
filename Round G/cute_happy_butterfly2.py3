@@ -246,44 +246,31 @@ class SortedList(object):
         return 'SortedList({0})'.format(list(self))
 
 def cute_happy_butterfly():
-    def update_right(i):
-        while i+1 < len(sl[0]) and dp[0][sl[0][i]] >= dp[0][sl[0][i+1]]:
-            del dp[0][sl[0][i+1]]
-            del sl[0][i+1]
-
-    def update_left(i):
-        while i-1 >= 0 and dp[1][sl[1][i]] >= dp[1][sl[1][i-1]]:
-            del dp[1][sl[1][i-1]]
-            del sl[1][i-1]
-            i -= 1
+    def update(dp, sl, i):
+        while i+1 < len(sl) and dp[sl[i]] >= dp[sl[i+1]]:
+            del dp[sl[i+1]]
+            del sl[i+1]
 
     N, E = map(int, input().split())
     lookup = defaultdict(list)
     for _ in range(N):
         X, Y, C = map(int, input().split())
         lookup[Y].append((X, C))
-    dp = [{(0, MAX_Y+1):0}, {(MAX_X, MAX_Y+1):-E}]
-    sl = [SortedList([(0, MAX_Y+1)]), SortedList([(MAX_X, MAX_Y+1)])]
+    dp = [{(0, MAX_Y+1):0}, {(-MAX_X, MAX_Y+1):-E}]
+    sl = [SortedList([(0, MAX_Y+1)]), SortedList([(-MAX_X, MAX_Y+1)])]
     for Y in sorted(lookup.keys(), reverse=True):
         lookup[Y].sort()
-        for X, C in lookup[Y]:
-            i = sl[0].bisect_left((X+1,))-1
-            dp[0][(X, Y)] = dp[0][sl[0][i]]+C
-            sl[0].add((X, Y))
-            i = sl[0].bisect_left((X, Y))
-            update_right(i)
-        for X, C in reversed(lookup[Y]):
-            i = sl[1].bisect_left((X,))
-            dp[1][(X, Y)] = dp[1][sl[1][i]]+C
-            sl[1].add((X, Y))
-            i = sl[1].bisect_left((X, Y))
-            update_left(i)
-        mx = [dp[0][sl[0][-1]], dp[1][sl[1][0]]]
-        dp[0][sl[0][0]] = max(dp[0][sl[0][0]], mx[1]-E)
-        update_right(0)
-        dp[1][sl[1][-1]] = max(dp[1][sl[1][-1]], mx[0]-E)
-        update_left(len(sl[1])-1)
-    return max(dp[0][sl[0][-1]], dp[1][sl[1][0]])
+        for i, sign, direction in ((0, 1, lambda x: x), (1, -1, reversed)):
+            for X, C in direction(lookup[Y]):
+                j = sl[i].bisect_left((sign*X+1,))-1
+                dp[i][(sign*X, Y)] = dp[i][sl[i][j]]+C
+                sl[i].add((sign*X, Y))
+                update(dp[i], sl[i], sl[i].bisect_left((sign*X, Y)))
+        mx = [dp[i][sl[i][-1]] for i in range(2)]
+        for i in range(2):
+            dp[i][sl[i][0]] = max(dp[i][sl[i][0]], mx[i^1]-E)
+            update(dp[i], sl[i], 0)
+    return max(dp[i][sl[i][-1]] for i in range(2))
 
 MAX_X, MAX_Y = 10**5, 10**9
 for case in range(int(input())):
