@@ -1,6 +1,6 @@
 # Copyright (c) 2022 kamyu. All rights reserved.
 #
-# Google Kick Start 2022 Round G - Problem D. Cute Happy Butterfly
+# Google Kick Start 2022 Round G - Problem D. Cute Little Butterfly
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb2e1/0000000000c17b68
 #
 # Time:  O(NlogN)
@@ -245,7 +245,7 @@ class SortedList(object):
         """Return string representation of sorted list."""
         return 'SortedList({0})'.format(list(self))
 
-def cute_happy_butterfly():
+def cute_little_butterfly():
     def update(dp, sl, i):
         while i+1 < len(sl) and dp[sl[i]] >= dp[sl[i+1]]:
             del dp[sl[i+1]]
@@ -274,4 +274,4 @@ def cute_happy_butterfly():
 
 MIN_X, MAX_X, MAX_Y = 0, 10**5, 10**9
 for case in range(int(input())):
-    print('Case #%d: %s' % (case+1, cute_happy_butterfly()))
+    print('Case #%d: %s' % (case+1, cute_little_butterfly()))

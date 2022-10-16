@@ -1,6 +1,6 @@
 # Copyright (c) 2022 kamyu. All rights reserved.
 #
-# Google Kick Start 2022 Round G - Problem D. Cute Happy Butterfly
+# Google Kick Start 2022 Round G - Problem D. Cute Little Butterfly
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb2e1/0000000000c17b68
 #
 # Time:  O(NlogN), pass in PyPy3 but Python3 in test set 3
@@ -49,7 +49,7 @@ class SegmentTree(object):
             R //= 2
         return self.query_fn(left, right)
 
-def cute_happy_butterfly():
+def cute_little_butterfly():
     N, E = map(int, input().split())
     lookup = defaultdict(list)
     X_set = set()
@@ -73,4 +73,4 @@ def cute_happy_butterfly():
     return max(dp[0].tree[1], dp[1].tree[1])
 
 for case in range(int(input())):
-    print('Case #%d: %s' % (case+1, cute_happy_butterfly()))
+    print('Case #%d: %s' % (case+1, cute_little_butterfly()))
