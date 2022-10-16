@@ -8,19 +8,11 @@
 #
 
 def curling():
-    def scoring_stones():
-        stones = []
-        N = int(input())
-        for _ in range(N):
-            X, Y = map(int, input().split())
-            if X**2+Y**2 <= R**2:
-                stones.append(X**2+Y**2)
-        return stones
-
-    R = sum(map(int, input().split()))
-    A, B = scoring_stones(), scoring_stones()
-    min_A, min_B = min(A, default=float("inf")), min(B, default=float("inf"))
-    return "%s %s" % (sum(x < min_B for x in A), sum(x < min_A for x in B))
+    R_square = sum(map(int, input().split()))**2
+    stones = [[list(map(int, input().split())) for _ in range(int(input()))] for _ in range(2)]
+    mn = [min((X**2+Y**2 for X, Y in stones[i]), default=float("inf")) for i in range(2)]
+    result = [sum(X**2+Y**2 <= min(mn[i^1]-1, R_square) for X, Y in stones[i]) for i in range(2)]
+    return "{} {}".format(*result)
 
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, curling()))
