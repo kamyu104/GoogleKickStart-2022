@@ -77,5 +77,5 @@
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Running in Circles](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb1b6/0000000000c4766e)| [Python3](./Round%20H/running_in_cycles.py3) | _O(N)_ | _O(1)_ | Easy | | Array |
 |B| [Magical Well Of Lilies](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb1b6/0000000000c47e79)| [Python3](./Round%20H/magical_of_lilies.py3) | _O(MAX_L * log(MAX_L))_ | _O(MAX_L)_ | Medium | | DP |
-|C| [Eelectricity](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb1b6/0000000000c47c8e)| [Python3](./Round%20H/electricity.py3) [Python3](./Round%20G/electricity2.py3) | _O(N)_ | _O(N)_ | Medium | | Topological Sort, BFS, DFS |
+|C| [Eelectricity](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb1b6/0000000000c47c8e)| [Python3](./Round%20H/electricity.py3) [Python3](./Round%20H/electricity2.py3) | _O(N)_ | _O(N)_ | Medium | | Topological Sort, BFS, DFS |
 |D| [Level Design](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb1b6/0000000000c47792)| [PyPy3](./Round%20H/level_design.py3) | _O(N * sqrt(N))_ | _O(N)_ | Hard | | DP, Mono Deque |
