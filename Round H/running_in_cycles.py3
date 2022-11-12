@@ -9,7 +9,7 @@
 
 def norm(x, L):
     q, r = divmod(abs(x), L)
-    return (q, r) if x >= 0 else (q, -r)
+    return (q, (r if x >= 0 else -r))
 
 def running_in_cycles():
     L, N = map(int, input().split())
