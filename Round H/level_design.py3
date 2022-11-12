@@ -3,7 +3,7 @@
 # Google Kick Start 2022 Round H - Problem D. Level Design
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb1b6/0000000000c47792
 #
-# Time:  O(N * sqrt(N)), pass in PyPy3 but Python3
+# Time:  O(N * sqrt(N))
 # Space: O(N)
 #
 
@@ -18,7 +18,8 @@ def count_of_cycle_length(P):
             lookup[i] = True
             i = P[i]
             l += 1
-        cnt[l] += 1
+        if l:
+            cnt[l] += 1
     return cnt
 
 def level_design():
@@ -27,7 +28,7 @@ def level_design():
     cnt = count_of_cycle_length(P)
     dp = [INF]*(N+1)
     dp[0] = 0
-    for l in range(N+1):
+    for l in range(1, N+1):
         if not cnt[l]:
             continue
         for i in range(l):
