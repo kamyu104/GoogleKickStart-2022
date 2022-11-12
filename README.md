@@ -1,4 +1,4 @@
-# [GoogleKickStart 2022](https://codingcompetitions.withgoogle.com/kickstart/archive/2022) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-28%20%2F%2028-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.googlekickstart.2022)
+# [GoogleKickStart 2022](https://codingcompetitions.withgoogle.com/kickstart/archive/2022) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-32%20%2F%2032-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.googlekickstart.2022)
 
 * Python3 solutions of Google Kick Start 2022. Solution begins with `*` means it will get TLE in the largest data set.
 * Total computation amount > `10^8` is not friendly for Python3 to solve in 5 ~ 15 seconds.
@@ -14,6 +14,7 @@
 * [Round E](https://github.com/kamyu104/GoogleKickStart-2022#round-e)
 * [Round F](https://github.com/kamyu104/GoogleKickStart-2022#round-f)
 * [Round G](https://github.com/kamyu104/GoogleKickStart-2022#round-g)
+* [Round H](https://github.com/kamyu104/GoogleKickStart-2022#round-g)
 
 ## Round A
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
@@ -70,3 +71,11 @@
 |B| [Curling](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb2e1/0000000000c17c82)| [Python3](./Round%20G/curling.py3) | _O(N + M)_ | _O(N + M)_ | Easy | | Array |
 |C| [Happy Subarrays](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb2e1/0000000000c17491)| [Python3](./Round%20G/happy_subarrays.py3) [Python3](./Round%20G/happy_subarrays2.py3) | _O(N)_ | _O(N)_ | Medium | | Prefix Sum, Mono Stack |
 |D| [Cute Little Butterfly](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb2e1/0000000000c17b68)| [PyPy3](./Round%20G/cute_little_butterfly.py3) [Python3](./Round%20G/cute_little_butterfly2.py3) | _O(NlogN)_ | _O(N)_ | Hard | | DP, Segment Tree, Coordinate Compression, Sorted List |
+
+## Round H
+| # | Title | Solution | Time | Space | Difficulty | Tag | Note |
+|---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+|A| [Running in Circles](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb1b6/0000000000c4766e)| [Python3](./Round%20H/running_in_cycles.py3) | _O(N)_ | _O(1)_ | Easy | | Array |
+|B| [Magical Well Of Lilies](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb1b6/0000000000c47e79)| [Python3](./Round%20H/magical_of_lilies.py3) | _O(MAX_L * log(MAX_L))_ | _O(MAX_L)_ | Medium | | DP |
+|C| [Eelectricity](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb1b6/0000000000c47c8e)| [Python3](./Round%20H/electricity.py3) [Python3](./Round%20G/electricity2.py3) | _O(N)_ | _O(N)_ | Medium | | Topological Sort, BFS, DFS |
+|D| [Level Design](https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb1b6/0000000000c47792)| [PyPy3](./Round%20H/level_design.py3) | _O(N * sqrt(N))_ | _O(N)_ | Hard | | DP, Mono Deque |
