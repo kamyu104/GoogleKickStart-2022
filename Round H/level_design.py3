@@ -3,7 +3,7 @@
 # Google Kick Start 2022 Round H - Problem D. Level Design
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb1b6/0000000000c47792
 #
-# Time:  O(N * sqrt(N))
+# Time:  O(N * sqrt(N)), pass in PyPy3 but Python3
 # Space: O(N)
 #
 
