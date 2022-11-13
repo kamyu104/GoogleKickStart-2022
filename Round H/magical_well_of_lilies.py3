@@ -7,7 +7,7 @@
 # Space: O(MAX_L)
 #
 
-def magical_of_lilies():
+def magical_well_of_lilies():
     L = int(input())
     return DP[L]
 
@@ -19,4 +19,4 @@ for i in range(1, MAX_L+1):
     for j in range(2*i, MAX_L+1, i):
         DP[j] = min(DP[j], DP[i]+4+2*(j//i-1))
 for case in range(int(input())):
-    print('Case #%d: %s' % (case+1, magical_of_lilies()))
+    print('Case #%d: %s' % (case+1, magical_well_of_lilies()))
