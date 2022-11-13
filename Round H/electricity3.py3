@@ -3,9 +3,22 @@
 # Google Kick Start 2022 Round H - Problem C. Eelectricity
 # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb1b6/0000000000c47c8e
 #
-# Time:  O(NlogN)
+# Time:  O(N)
 # Space: O(N)
 #
+
+def iter_dfs(adj, dp, u):
+    stk = [(1, u)]
+    while stk:
+        step, u = stk.pop()
+        if step == 1:
+            if dp[u]:
+                continue
+            stk.append((2, u))
+            for v in adj[u]:
+                stk.append((1, v))
+        elif step == 2:
+            dp[u] += 1+sum(dp[v] for v in adj[u])
 
 def electricity():
     N = int(input())
@@ -17,15 +30,12 @@ def electricity():
         Y -= 1
         if A[X] == A[Y]:
             continue
-        if A[X] > A[Y]:
+        if A[X] < A[Y]:
             X, Y = Y, X
         adj[X].append(Y)
-    idx = list(range(N))
-    idx.sort(key=lambda x: A[x])
-    dp = [1]*N
-    for i in idx:
-        for j in adj[i]:
-            dp[j] += dp[i]
+    dp = [0]*len(adj)
+    for u in range(N):
+        iter_dfs(adj, dp, u)
     return max(dp)
 
 for case in range(int(input())):
