@@ -23,9 +23,9 @@ def electricity():
     idx = list(range(N))
     idx.sort(key=lambda x: A[x])
     dp = [1]*N
-    for i in idx:
-        for j in adj[i]:
-            dp[j] += dp[i]
+    for u in idx:
+        for v in adj[u]:
+            dp[v] += dp[u]
     return max(dp)
 
 for case in range(int(input())):
