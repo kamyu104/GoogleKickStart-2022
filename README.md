@@ -15,6 +15,7 @@
 * [Round F](https://github.com/kamyu104/GoogleKickStart-2022#round-f)
 * [Round G](https://github.com/kamyu104/GoogleKickStart-2022#round-g)
 * [Round H](https://github.com/kamyu104/GoogleKickStart-2022#round-g)
+* [Code Jam Farewell Rounds](https://github.com/kamyu104/GoogleCodeJam-Farewell-Rounds)
 
 ## Round A
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
